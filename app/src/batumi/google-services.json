@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "422266546532",
+    "project_id": "my-batumi"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422266546532:android:4d19577c11f4f128",
+        "android_client_info": {
+          "package_name": "ru.moygorod.batumi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbmZ9j6nmpC7R3Ovb08kkLgFq_asSE2Dg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-86768674-5"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

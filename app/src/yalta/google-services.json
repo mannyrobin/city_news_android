@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "175495407818",
+    "project_id": "my-yalta"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:175495407818:android:e8f7678deeb1efae",
+        "android_client_info": {
+          "package_name": "ru.moygorod.yalta"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDm5_2NnKlattnTsE1t-RSgIwy1DBbBDw4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-86361125-6"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

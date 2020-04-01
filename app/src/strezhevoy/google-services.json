@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "752327527116",
+    "project_id": "my-strezhevoy"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:752327527116:android:2a24dc6c12595e45",
+        "android_client_info": {
+          "package_name": "ru.moygorod.strezhevoy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhWUXhcStQnuR5CSrq30EldmnlaudyW1o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-87109670-6"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "561780306231",
+    "project_id": "my-soligorsk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:561780306231:android:8083c2bfa5b4c3f6",
+        "android_client_info": {
+          "package_name": "ru.moygorod.soligorsk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu_X53eeOod4ldFt9FQRK660Ir8hFSAFM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-87109670-9"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

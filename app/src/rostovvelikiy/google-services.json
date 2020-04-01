@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "661369849917",
+    "project_id": "my-rostovvelikiy"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661369849917:android:4fc8db6707a3f4ab",
+        "android_client_info": {
+          "package_name": "ru.moygorod.rostovvelikiy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdnJQqBGQ_zBXUgKk2_qXrqCTd88dPcTo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-86361125-4"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

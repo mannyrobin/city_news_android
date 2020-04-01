@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "867011177817",
+    "project_id": "my-neftejugansk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:867011177817:android:c853fa252ae54082",
+        "android_client_info": {
+          "package_name": "ru.moygorod.neftejugansk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBR89j9s2mNx5mqCccJvLb_AV7_Bne5mpE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-84472766-4"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

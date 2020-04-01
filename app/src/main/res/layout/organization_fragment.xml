@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:id="@+id/scrollView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:windowBackground"
+    android:fillViewport="true"
+    >
+
+    <RelativeLayout
+        android:id="@+id/body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <FrameLayout
+            android:id="@+id/map_container"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            tools:layout_height="140dp"/>
+
+        <TextView
+            android:id="@+id/text_path"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@+id/map_container"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:textColor="@color/gray_title_color"
+            tools:text="Справочник\Еда\WiFi"/>
+
+        <FrameLayout
+            android:id="@+id/segmented_tabs_frame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_path"
+            android:background="@color/list_light_gray">
+
+            <info.hoang8f.android.segmented.SegmentedGroup
+                android:id="@+id/segment_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+
+                segmentedgroup:sc_border_width="1dp"
+                segmentedgroup:sc_unselected_layout="@drawable/org_radio_unchecked"
+                segmentedgroup:sc_tint_color="@color/primary"
+                segmentedgroup:sc_corner_radius="10dp">
+
+                <!--segmentedgroup:sc_tint_color="@color/primary"-->
+                <!--segmentedgroup:sc_checked_text_color="#ffffff"-->
+                <!--segmentedgroup:sc_tint_color="@color/button"-->
+                <!--android:textColor">@drawable/button_text_color-->
+                <RadioButton
+
+                    android:id="@+id/contacts"
+                    style="@style/RadioButton"
+
+                    
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.33"
+
+                    android:text="@string/seg_button_contacts"
+                    />
+
+                <RadioButton
+                    android:id="@+id/info"
+                    style="@style/RadioButton"
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.33"
+                    android:text="@string/seg_button_info"
+                    />
+
+                <RadioButton
+                    android:id="@+id/working_time"
+                    style="@style/RadioButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.33"
+                    android:text="@string/seg_button_working_time"
+                    />
+            </info.hoang8f.android.segmented.SegmentedGroup>
+        </FrameLayout>
+
+        <RelativeLayout
+            android:id="@+id/segmented_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/segmented_tabs_frame">
+
+            <include android:id="@id/contacts"
+                layout="@layout/fragment_org_contacts"
+                android:visibility="gone"
+                tools:visibility="visible"/>
+
+
+            <include android:id="@id/info"
+                     layout="@layout/fragment_org_info"
+                     android:visibility="gone"
+            />
+
+            <include android:id="@id/working_time"
+                     layout="@layout/fragment_org_working_hours"
+                     android:visibility="gone"
+                />
+
+
+            <!--
+            <android.support.v4.view.ViewPager
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+                -->
+            <!--
+            <TextView
+                android:id="@android:id/text2"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+            -->
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</ScrollView>

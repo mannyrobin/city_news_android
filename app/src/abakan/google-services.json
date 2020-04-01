@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "396118677750",
+    "project_id": "firebase-my-abakan"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:396118677750:android:720f95bef0acd3bc",
+        "android_client_info": {
+          "package_name": "ru.moygorod.abakan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0eniIcEDf9gexAlty69H79zW_8lO9xBw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-84689266-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

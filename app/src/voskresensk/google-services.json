@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "314165715890",
+    "project_id": "my-voskresensk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314165715890:android:aca66749775b816e",
+        "android_client_info": {
+          "package_name": "ru.moygorod.voskresensk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDny2tYWbZnswjjIB6AuLNEV59KRdUv4bM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-87109670-3"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

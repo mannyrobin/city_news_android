@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "481669867196",
+    "project_id": "my-volzhskiy"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481669867196:android:01cfc6c804feffe0",
+        "android_client_info": {
+          "package_name": "ru.moygorod.volzhskiy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8JD3WthJHpAmE5MdBBU0LrIUlJCBIFOI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-86361125-2"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

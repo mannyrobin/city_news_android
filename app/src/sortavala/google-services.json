@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "642581451586",
+    "project_id": "my-sortavala"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:642581451586:android:ea5806330598aedc",
+        "android_client_info": {
+          "package_name": "ru.moygorod.sortavala"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAk2g0eFdjlFlbXiOUdla8HfqRA5fatr20"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-73885724-43"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

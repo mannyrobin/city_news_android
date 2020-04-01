@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "363037741229",
+    "project_id": "my-biysk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:363037741229:android:34dc422ed6a48f62",
+        "android_client_info": {
+          "package_name": "ru.moygorod.biysk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmHyfrZeGI2cJs-84gTDXhotOCKRYHGt8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-87109670-11"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

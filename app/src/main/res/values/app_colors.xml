@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+<!--
+  <color name="primary">#4CAF50</color>
+  <color name="primary_dark">#388E3C</color>
+  <color name="primary_light">#C8E6C9</color>
+  <color name="accent">#8BC34A</color>
+-->
+  
+<!--
+  <color name="primary">#99d363</color>
+  <color name="primary">#8BC34A</color>
+-->
+
+<!--
+  <color name="primary">#99d363</color>
+  <color name="primary_dark">#689F38</color>
+  <color name="primary_light">#DCEDC8</color>
+  <color name="accent">#CDDC39</color>
+  <color name="text_link">#036cb5</color>
+-->  
+<!--
+#99d363
+-->
+
+
+
+  <color name='accent'>@color/primary</color>
+  <color name='colorControlHighlight'>@color/primary</color>
+  <color name='toolbar'>@color/primary</color>
+  <color name='toolbar_dark'>@color/primary_dark</color>
+
+  <color name="logo_text">#ffffffff</color>
+  <color name="list_light_gray">#f0f0f0</color>
+  <color name="lt_gray_title_color">#cccccc</color>
+  <color name="gray_title_color">#929292</color>
+
+  <color name="gray_panel_color">#f2f2f2</color>
+  <color name="date_color">#6a6a6a</color>
+  <color name="list_bg">#f0f0f0</color>
+
+
+  <!--
+  <color name="button_color">#62aeec</color>
+  -->
+
+
+<!--
+  <color name="radio_button_selected_color">#9dd46e</color>
+  -->
+  <!--
+  <color name="radio_button_selected_color">@color/primary</color>
+  <color name="radio_button_unselected_color">@android:color/transparent</color>
+  -->
+<!--
+  <color name="radio_button_unselected_color">@android:color/white</color>
+-->
+
+
+  <!--
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#727272</color>
+    <color name="icons">#212121</color>
+    <color name="divider">#B6B6B6</color>
+  -->
+</resources>
+
+

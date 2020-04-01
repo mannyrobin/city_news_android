@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "212374909375",
+    "project_id": "my-kyzyl"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:212374909375:android:014250aadacb4448",
+        "android_client_info": {
+          "package_name": "ru.moygorod.kyzyl"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3lA1M-cxOeeyaMu1FZP9F3XGv0hh5g_M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-77768135-14"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

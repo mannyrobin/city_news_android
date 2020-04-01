@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="intro3_title_size">18sp</dimen>
+    <dimen name="intro3_icon_size">32dp</dimen>
+    <dimen name="intro3_icon_margin_top">10dp</dimen>
+    <dimen name="intro2_image_margin">4dp</dimen>
+    <dimen name="intro1_title_margin_top">10dp</dimen>
+    <dimen name="intro1_title2_margin_top">12dp</dimen>
+    <dimen name="intro1_title2_size">18sp</dimen>
+    <dimen name="intro1_title1_size">20sp</dimen>
+    <dimen name="intro1_image_margin_top">8dp</dimen>
+
+
+</resources>

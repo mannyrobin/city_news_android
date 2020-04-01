@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "1038523029286",
+    "project_id": "my-votkinsk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1038523029286:android:63fb23291c37ef32",
+        "android_client_info": {
+          "package_name": "ru.moygorod.votkinsk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQBiYyz68Gsg7JrUnuUecDNV7dfgfdpUs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-86768674-9"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

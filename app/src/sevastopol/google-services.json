@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "37963968960",
+    "project_id": "my-sevastopol"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:37963968960:android:3a758f4ea06af405",
+        "android_client_info": {
+          "package_name": "ru.moygorod.sevastopol"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqGhC64Prvd-mtbI9ppd6N3Ku8-oMU2Vg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-84472766-3"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "283171883341",
+    "project_id": "my-penza"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:283171883341:android:93c3ee9879af6427",
+        "android_client_info": {
+          "package_name": "ru.moygorod.penza"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8BJgvFCZW8yICojCuPlDyifzZD_YoVzM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-84689266-10"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

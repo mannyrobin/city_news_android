@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "134630350830",
+    "project_id": "my-salehard"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:134630350830:android:0256ec0175ef88a3",
+        "android_client_info": {
+          "package_name": "ru.moygorod.salehard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbXrDxyNH0hzWWUDhhYyO77c5qONRI6Zw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-87109670-4"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

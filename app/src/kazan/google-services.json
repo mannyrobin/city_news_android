@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "1093275199549",
+    "project_id": "my-kazan"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1093275199549:android:ea6c724dbd27e7b9",
+        "android_client_info": {
+          "package_name": "ru.moygorod.kazan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAleoPPKmWUIJ_kXYnh2EkinC8S5VIiJkQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-79761043-19"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

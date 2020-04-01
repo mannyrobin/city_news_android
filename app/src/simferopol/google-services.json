@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "938976057076",
+    "project_id": "my-simferopol"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:938976057076:android:491be047b4c7ceff",
+        "android_client_info": {
+          "package_name": "ru.moygorod.simferopol"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoVzpv-7D9Oid2XW3e3gFi_hwL1ih4Bb4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-87028257-6"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

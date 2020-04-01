@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "408095988926",
+    "project_id": "my-vladimir"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408095988926:android:53b2eae5db6c0519",
+        "android_client_info": {
+          "package_name": "ru.moygorod.vladimir"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwrqh_rzwbbm8Lw-yD2O420BVsPVNe6og"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-86768674-2"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "577903635363",
+    "project_id": "my-brest"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577903635363:android:622982d84a8de901",
+        "android_client_info": {
+          "package_name": "ru.moygorod.brest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_ce2U49ol0hRA7QoEjCa6EVOSM-Jtf0o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-77768135-8"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

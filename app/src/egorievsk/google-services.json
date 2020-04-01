@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "787045284270",
+    "project_id": "my-egorievsk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787045284270:android:fc0ca7d5fb29bf64",
+        "android_client_info": {
+          "package_name": "ru.moygorod.egorievsk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4Bi-lECZOe1YGDYmY2HHofX5zFc87ZOc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-87109670-10"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "83946038056",
+    "project_id": "my-sergach"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83946038056:android:5a10eff084200ae8",
+        "android_client_info": {
+          "package_name": "ru.moygorod.sergach"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1_O2qvZCQcGW6ghoFt2IJ0of-rw_mcZg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-79761043-3"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "239120638054",
+    "project_id": "my-staryjoskol"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239120638054:android:a40dee597f76f5f8",
+        "android_client_info": {
+          "package_name": "ru.moygorod.staryjoskol"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBjCoDRLLcDb51bC0TKV3JTYaT-krF9UI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-86768674-6"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "579047812587",
+    "project_id": "my-omsk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:579047812587:android:f8f60529d24dd56d",
+        "android_client_info": {
+          "package_name": "ru.moygorod.omsk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClgMHz7Foug7Ijn45kJeislbN6e6nNM2w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-79761043-25"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

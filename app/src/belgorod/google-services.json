@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "1078233391615",
+    "project_id": "my-belgorod"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078233391615:android:7fa7bb4e6e5d026c",
+        "android_client_info": {
+          "package_name": "ru.moygorod.belgorod"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMnfVb_U7zLJjcEL0qcxM4OnKUh9d0zoQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-77768135-21"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

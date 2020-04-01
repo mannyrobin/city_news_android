@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+  <string name='menu_item_main'>Главная</string>
+  <string name='menu_item_categories'>Справочник</string>
+  <string name='menu_item_placard'>Афиша</string>
+  <string name='menu_item_actions'>Акции</string>
+  <string name='menu_item_news'>Новости</string>
+  <string name='menu_item_notifications'>Уведомления</string>
+  <string name='menu_item_add_organization'>Добавить организацию</string>
+  <string name='menu_item_add_event'>Добавить мероприятие</string>
+  <string name='menu_item_about'>О проекте</string>
+  <string name='menu_item_social_login'>Авторизация в соцсетях</string>
+</resources>

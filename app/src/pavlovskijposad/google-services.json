@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "614952964236",
+    "project_id": "my-pavlovskijposad"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:614952964236:android:efb9991548adc71b",
+        "android_client_info": {
+          "package_name": "ru.moygorod.pavlovskijposad"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyr4yHbSmKHHm-SdgnoiVY3dFpKx28teE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-84689266-12"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,3248 @@
+buildscript {
+
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+    dependencies {
+       classpath 'io.fabric.tools:gradle:1.+'
+    }
+
+}
+apply plugin: 'com.android.application'
+
+
+
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+
+apply plugin: 'com.github.triplet.play'
+
+apply from: "../generate.gradle"
+
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
+def getProperties(def flavor)
+{
+    Properties p = new Properties ();
+
+    def root_dir = "app/src/$flavor";
+    p.load (
+        new BufferedReader (
+            new InputStreamReader (
+                new FileInputStream (
+                    rootProject.file ("$root_dir/project.properties")
+                ),
+                "UTF-8"
+            )
+        )
+    );
+
+    return p
+}
+
+def updateProperties(def flavor, def properties)
+{
+    def root_dir = "app/src/$flavor";
+
+    properties.store(
+        new OutputStreamWriter(
+            new FileOutputStream (rootProject.file ("$root_dir/project.properties")), "UTF-8"
+        ), 
+        "auto updated for reason to change google track label!!!"
+    );
+}
+
+def getCurrentFlavor()
+{
+    Gradle gradle = getGradle();
+    String  tskReqStr = gradle.getStartParameter().getTaskRequests().toString();
+    println "[getCurrentFlavor] TASK: '$tskReqStr'";
+
+    Pattern pattern;
+
+    if (tskReqStr.contains ("assemble"))
+        pattern = Pattern.compile("assemble(\\w+)(Release|Debug)\\w*");
+    else if (tskReqStr.contains ("generate"))
+        pattern = Pattern.compile("generate(\\w+)(Release|Debug)\\w*");
+    else if (tskReqStr.contains ("publishApk"))
+        pattern = Pattern.compile("publishApk(\\w+)(Release|Debug)\\w*");
+    else if (tskReqStr.contains ("process"))
+        pattern = Pattern.compile("process(\\w+)(Release|Debug)\\w*");
+    else
+        pattern = Pattern.compile(".*");
+
+    Matcher matcher = pattern.matcher (tskReqStr);
+
+    if (0 == matcher.groupCount() || false == matcher.find())
+        return "";
+
+    return matcher.group(1).toLowerCase();
+}
+
+def loadAssets(def city)
+{
+    Gradle gradle = getGradle()
+    def taskString =  gradle.getStartParameter().getTaskRequests().toString()
+
+
+    if ( taskString.contains("assembleRelease") || taskString.contains("installRelease") ||  ( taskString.contains("Release") && taskString.toLowerCase().contains(city.toLowerCase())))
+    {
+        println "Load Assets $city"
+        generate(city,'src/main')
+    }
+
+    return taskString
+}
+
+def validateGoogleTrackLabel(def task, def city, def label)
+{
+    println "[$task] Check google track label '$label'";
+
+    int code = 0;
+    java.net.HttpURLConnection connection = null;
+    String  page = null;
+    try
+    {
+        URL url = new URL("https://play.google.com/store/apps/details?id=ru.moygorod." + city);
+        connection = (java.net.HttpURLConnection) url.openConnection();
+        code = connection.getResponseCode();
+        page = readInputStreamToString(connection);
+    }
+    catch (Throwable e)
+    {
+        println "[$task] Check Google play response code exception: '" + e.getMessage() + "'";
+        return label;
+    }
+    finally
+    {
+        if (null != connection)
+           connection.disconnect();
+    }
+
+    println "[$task] Google play response code = $code";
+    if (200 == code && null != page)
+    {
+        
+        if (page.contains("(Unreleased)"))    
+            label = "alpha"       
+        else    
+            label = "production";
+    }
+
+
+    println "[$task] Result google track label '$label'";
+    return label;
+}
+
+
+
+ String readInputStreamToString(HttpURLConnection connection) 
+ {
+    String result = null;
+    StringBuilder sb = new StringBuilder(1024);
+    InputStream is = null;
+
+    try {
+        is = new BufferedInputStream(connection.getInputStream());
+        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        String inputLine = "";
+        while ((inputLine = br.readLine()) != null) {
+            sb.append(inputLine);
+        }
+        result = sb.toString();
+    }
+    catch (Exception e) {
+        result = null;
+    }
+    finally {
+        if (is != null) {
+            try { 
+                is.close(); 
+            } 
+            catch (IOException e) {
+            }
+        }   
+    }
+    return result;
+ }
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "25"
+    
+    // for parse.com only. Delete in future
+    useLibrary 'org.apache.http.legacy'
+
+    def currentCity = ""
+    def applicationPrefix = APPLICATION_PREFIX
+    def buildNumber = Integer.parseInt(BUILD_NUMBER)
+
+    defaultConfig
+    {
+
+        versionCode buildNumber
+
+        //applicationId "cities.ru"
+        resConfigs "en", "ru"
+        //minSdkVersion 14
+        //minSdkVersion 9
+        minSdkVersion 10
+        targetSdkVersion 25
+
+
+        if (null == currentCity || true == currentCity.isEmpty())
+            currentCity = getCurrentFlavor();
+
+        println "[defaultConfig] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+        println "[defaultConfig] FLAVOUR: '$currentCity'";
+    }
+
+
+    play
+    {
+        def google_play_track = "alpha";
+        def json_file_name    = "../cert/Google_Play_Android_Developer-b1161f45f857.json";
+
+        if (null == currentCity || true == currentCity.isEmpty())
+            currentCity = getCurrentFlavor();
+
+        println "[play] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+        println "[play] FLAVOUR: '$currentCity'";
+
+        if (null != currentCity && true != currentCity.isEmpty())
+        {
+            def properties = getProperties(currentCity);
+  
+            if (null != properties.google_play_json_file_name && false == properties.google_play_json_file_name.isEmpty())
+            {
+                json_file_name = "src/$currentCity/$properties.google_play_json_file_name";
+            }
+
+            def prop_track = validateGoogleTrackLabel("play", currentCity, google_play_track);
+            if (false == prop_track.equals(google_play_track))
+            {
+                google_play_track            = prop_track;
+                //properties.google_play_track = prop_track;
+                // updateProperties(currentCity, properties); // desable for safe original comments in props file!!!
+                println "[play] auto change google_play_track after check application in GP!!!";
+            }
+        }
+        println "[play] google_play_track: '$google_play_track'";
+        println "[play] google_play_json_file_name: '$json_file_name'";
+
+        track    = google_play_track
+        jsonFile = file(json_file_name);
+    }
+
+
+
+    signingConfigs {
+        release {
+            storeFile file("../cert/mycity.keystore")
+            storePassword "w78kiG4mOaJ4nYqInV2I"
+            keyAlias "mycity"
+            keyPassword "w78kiG4mOaJ4nYqInV2I"
+        }
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles './proguard.cfg'
+            debuggable false
+            signingConfig signingConfigs.release
+        }
+        debug {
+            debuggable true
+            signingConfig signingConfigs.release
+        }
+    }
+
+
+
+    productFlavors
+    {
+       zelenograd
+       {
+           def city = "zelenograd"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       korolev
+       {
+           def city = "korolev"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       khimki
+       {
+           def city = "khimki"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       odintsovo
+       {
+           def city = "odintsovo"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       podolsk
+       {
+           def city = "podolsk"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       krasnogorsk
+       {
+           def city = "krasnogorsk"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       mytischi
+       {
+           def city = "mytischi"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       lobnya
+       {
+           def city = "lobnya"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       dolgoprudny
+       {
+           def city = "dolgoprudny"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       korkino
+       {
+           def city = "korkino"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       ramenskoe
+       {
+           def city = "ramenskoe"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       balashikha
+       {
+           def city = "balashikha"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       kyshtym
+       {
+           def city = "kyshtym"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       ozyorsk
+       {
+           def city = "ozyorsk"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       petrozavodsk
+       {
+           def city = "petrozavodsk"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       bryansk
+       {
+           def city = "bryansk"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       neftekamsk
+       {
+           def city = "neftekamsk"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       syktyvkar
+       {
+           def city = "syktyvkar"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       kaluga
+       {
+           def city = "kaluga"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       samara
+       {
+           def city = "samara"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       nizhnekamsk
+       {
+           def city = "nizhnekamsk"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       achinsk
+       {
+           def city = "achinsk"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       serpukhov
+       {
+           def city = "serpukhov"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       sortavala
+       {
+           def city = "sortavala"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       sibai
+       {
+           def city = "sibai"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       reutov
+       {
+           def city = "reutov"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       klin
+       {
+           def city = "klin"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       magnitogorsk
+       {
+           def city = "magnitogorsk"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       zhukovsky
+       {
+           def city = "zhukovsky"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       sovetsky
+       {
+           def city = "sovetsky"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       tstenburg
+       {
+           def city = "tstenburg"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       mitino
+       {
+           def city = "mitino"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       saintpetersburg
+       {
+           def city = "saintpetersburg"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       brest
+       {
+           def city = "brest"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       cherepovets
+       {
+           def city = "cherepovets"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       yeysk
+       {
+           def city = "yeysk"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       minsk
+       {
+           def city = "minsk"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       kursk
+       {
+           def city = "kursk"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       kyzyl
+       {
+           def city = "kyzyl"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       karaganda
+       {
+           def city = "karaganda"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       pereslavl
+       {
+           def city = "pereslavl"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       saransk
+       {
+           def city = "saransk"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       tomsk
+       {
+           def city = "tomsk"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       tula
+       {
+           def city = "tula"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       taraz
+       {
+           def city = "taraz"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       belgorod
+       {
+           def city = "belgorod"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       sochi
+       {
+           def city = "sochi"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       ivanteevka
+       {
+           def city = "ivanteevka"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       krasnoyarsk
+       {
+           def city = "krasnoyarsk"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       makhachkala
+       {
+           def city = "makhachkala"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       obninsk
+       {
+           def city = "obninsk"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       rostovdon
+       {
+           def city = "rostovdon"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       beloozersky
+       {
+           def city = "beloozersky"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       chernushka
+       {
+           def city = "chernushka"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       gatchina
+       {
+           def city = "gatchina"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       ishim
+       {
+           def city = "ishim"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       almati
+       {
+           def city = "almati"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       ufa
+       {
+           def city = "ufa"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       sergach
+       {
+           def city = "sergach"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       voronezh
+       {
+           def city = "voronezh"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       gubkinsky
+       {
+           def city = "gubkinsky"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       volgograd
+       {
+           def city = "volgograd"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       ulyanovsk
+       {
+           def city = "ulyanovsk"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       kirov
+       {
+           def city = "kirov"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+       chapaevsk
+       {
+           def city = "chapaevsk"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       nizhnynovgorod
+       {
+           def city = "nizhnynovgorod"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       almetyevsk
+       {
+           def city = "almetyevsk"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       kirovochepeck
+       {
+           def city = "kirovochepeck"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       astana
+       {
+           def city = "astana"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       novyurengoy
+       {
+           def city = "novyurengoy"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       } 
+
+       naryanmar
+       {
+           def city = "naryanmar"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       } 
+
+       novokuznetsk
+       {
+           def city = "novokuznetsk"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       } 
+
+       pushkin
+       {
+           def city = "pushkin"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       } 
+
+       yekaterinburg
+       {
+           def city = "yekaterinburg"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       } 
+
+       kazan
+       {
+           def city = "kazan"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       } 
+
+       novosibirsk
+       {
+           def city = "novosibirsk"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       } 
+
+       tyumen
+       {
+           def city = "tyumen"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       barnaul
+       {
+           def city = "barnaul"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       vologda
+       {
+           def city = "vologda"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       severodvinsk
+       {
+           def city = "severodvinsk"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       omsk
+       {
+           def city = "omsk"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       kokshektau
+       {
+           def city = "kokshektau"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       kaliningrad
+       {
+           def city = "kaliningrad"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       kumertau
+       {
+           def city = "kumertau"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       odessa
+       {
+           def city = "odessa"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       chelyabinsk
+       {
+           def city = "chelyabinsk"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       cheboksary
+       {
+           def city = "cheboksary"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       aleksin
+       {
+           def city = "aleksin"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+       verkhnyayapyshma
+       {
+           def city = "verkhnyayapyshma"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+        krasnodar
+       {
+           def city = "krasnodar"
+
+           println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+           println "[$city] FLAVOUR: '$currentCity'";
+
+           applicationId = applicationPrefix + city
+           def properties = getProperties(city)
+           versionName = properties.version + "." + buildNumber
+           resValue "string", "google_maps_key", properties.google_maps_key
+           resValue "string", "com_parse_application_id", properties.com_parse_application_id
+           resValue "string", "com_parse_client_key", properties.com_parse_client_key
+           loadAssets(city);
+       }
+
+        surgut
+                {
+                    def city = "surgut"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+        nizhnevartovsk
+                {
+                    def city = "nizhnevartovsk"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+        domodedovo
+                {
+                    def city = "domodedovo"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+        sevastopol
+                {
+                    def city = "sevastopol"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        neftejugansk
+                {
+                    def city = "neftejugansk"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+        tolyatty
+                {
+                    def city = "tolyatty"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        donetsk
+                {
+                    def city = "donetsk"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+        bishkek
+                {
+                    def city = "bishkek"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        sergievposad
+                {
+                    def city = "sergievposad"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+        perm
+                {
+                    def city = "perm"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        abakan
+                {
+                    def city = "abakan"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+        kamyshlov
+                {
+                    def city = "kamyshlov"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+        astrahan
+                {
+                    def city = "astrahan"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+        ruzaevka
+                {
+                    def city = "ruzaevka"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        yasnogorsk
+                {
+                    def city = "yasnogorsk"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        arhangelsk
+                {
+                    def city = "arhangelsk"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        lipeck
+                {
+                    def city = "lipeck"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        aleksandrov
+                {
+                    def city = "aleksandrov"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+        chistopol
+                {
+                    def city = "chistopol"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        penza
+                {
+                    def city = "penza"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        ryazan
+                {
+                    def city = "ryazan"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        pavlovskijposad
+                {
+                    def city = "pavlovskijposad"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        tagil
+                {
+                    def city = "tagil"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        chishmyidavlekanovo
+                {
+                    def city = "chishmyidavlekanovo"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+        stavropol
+                {
+                    def city = "stavropol"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        pushkino
+                {
+                    def city = "pushkino"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        tatarsk
+                {
+                    def city = "tatarsk"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        elista
+                {
+                    def city = "elista"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        belovo
+                {
+                    def city = "belovo"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+        schelkovo
+                {
+                    def city = "schelkovo"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        gomel
+                {
+                    def city = "gomel"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        berezniki
+                {
+                    def city = "berezniki"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        tazovskij_rajon
+                {
+                    def city = "tazovskij_rajon"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+        hantimansiysk
+                {
+                    def city = "hantimansiysk"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+        ust_ilimsk
+                {
+                    def city = "ust_ilimsk"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        volzhskiy
+                {
+                    def city = "volzhskiy"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        velikijnovgorod
+                {
+                    def city = "velikijnovgorod"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        rostovvelikiy
+                {
+                    def city = "rostovvelikiy"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        vladivostok
+                {
+                    def city = "vladivostok"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+        yalta
+                {
+                    def city = "yalta"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        gelengik
+                {
+                    def city = "gelengik"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+        vladimir
+                {
+                    def city = "vladimir"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        sovetsk
+                {
+                    def city = "sovetsk"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+        sarov
+                {
+                    def city = "sarov"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+        batumi
+                {
+                    def city = "batumi"
+
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+
+        staryjoskol
+                {
+                    def city = "staryjoskol"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        norilsk
+                {
+                    def city = "norilsk"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+
+
+
+        tver
+                {
+                    def city = "tver"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+
+
+
+
+        votkinsk
+                {
+                    def city = "votkinsk"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        syzran
+                {
+                    def city = "syzran"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        troick
+                {
+                    def city = "troick"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        izhevsk
+                {
+                    def city = "izhevsk"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        nojabrsk
+                {
+                    def city = "nojabrsk"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        eniseysklesosibirsk
+                {
+                    def city = "eniseysklesosibirsk"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        aprelevka
+                {
+                    def city = "aprelevka"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        electrostal
+                {
+                    def city = "electrostal"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        irkutsk
+                {
+                    def city = "irkutsk"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        simferopol
+                {
+                    def city = "simferopol"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        bratsk
+                {
+                    def city = "bratsk"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        ljubercy
+                {
+                    def city = "ljubercy"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        uhta
+                {
+                    def city = "uhta"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        orjol
+                {
+                    def city = "orjol"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        miass
+                {
+                    def city = "miass"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+
+
+
+        kolomna
+                {
+                    def city = "kolomna"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        kerch
+                {
+                    def city = "kerch"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        voskresensk
+                {
+                    def city = "voskresensk"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        salehard
+                {
+                    def city = "salehard"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        bugulma
+                {
+                    def city = "bugulma"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        strezhevoy
+                {
+                    def city = "strezhevoy"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        chita
+                {
+                    def city = "chita"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        tobolsk
+                {
+                    def city = "tobolsk"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        soligorsk
+                {
+                    def city = "soligorsk"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        egorievsk
+                {
+                    def city = "egorievsk"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        biysk
+                {
+                    def city = "biysk"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        jaroslavl
+                {
+                    def city = "jaroslavl"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+
+
+        kaspijsk
+                {
+                    def city = "kaspijsk"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        zelenodolsk
+                {
+                    def city = "zelenodolsk"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        vidnoe
+                {
+                    def city = "vidnoe"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        smolensk
+                {
+                    def city = "smolensk"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        tulun
+                {
+                    def city = "tulun"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        berdsk
+                {
+                    def city = "berdsk"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        moskovsky
+                {
+                    def city = "moskovsky"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        vladikavkaz
+                {
+                    def city = "vladikavkaz"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        kolpino
+                {
+                    def city = "kolpino"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        novomoskovsk
+                {
+                    def city = "novomoskovsk"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+
+
+
+        tosno
+                {
+                    def city = "tosno"
+                    println "[$city] TASK: '" + getGradle().getStartParameter().getTaskRequests().toString() + "'";
+                    println "[$city] FLAVOUR: '$currentCity'";
+                    applicationId = applicationPrefix + city
+                    def properties = getProperties(city)
+                    versionName = properties.version + "." + buildNumber
+                    resValue "string", "google_maps_key", properties.google_maps_key
+                    resValue "string", "com_parse_application_id", properties.com_parse_application_id
+                    resValue "string", "com_parse_client_key", properties.com_parse_client_key
+                    loadAssets(city);
+                }
+
+
+    }
+
+    packagingOptions {
+        exclude '.readme'
+        exclude 'project.properties'
+    }
+
+}
+
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    //testCompile 'junit:junit:4.12'
+
+    compile project(':third-party-libs:android-segmented-control')
+    //compile 'info.hoang8f:android-segmented:1.0.6'
+
+    compile 'com.android.support:support-annotations:+'
+
+    //compile "com.android.support:appcompat-v7:23.1.1"
+    //compile 'com.android.support:design:23.1.1'
+
+
+    //compile "com.android.support:appcompat-v7:23.2.1"
+    //compile 'com.android.support:design:23.2.1'
+
+    //compile "com.android.support:appcompat-v7:23.2.0"
+    //compile 'com.android.support:design:23.2.0'
+
+
+    compile "com.android.support:appcompat-v7:25.0.1"
+    compile 'com.android.support:design:25.0.1'
+
+
+    compile 'com.nostra13.universalimageloader:universal-image-loader:+'
+    compile 'com.google.code.gson:gson:+'
+
+    //compile 'org.osmdroid:osmdroid-android:5.1@aar'
+    //compile 'com.google.android.gms:play-services-maps:8.4.0'
+
+    //compile 'com.google.android.gms:play-services-maps:8.3.0'
+    //compile 'com.google.android.gms:play-services-analytics:8.3.0'
+
+    //compile 'org.osmdroid:osmdroid-android:5.1@aar'
+
+    //compile 'com.google.android.gms:play-services-maps:8.+'
+    //compile 'com.google.android.gms:play-services-analytics:8.+'
+        
+    compile 'com.google.android.gms:play-services-maps:10.0.1'
+    compile 'com.google.android.gms:play-services-analytics:10.0.1'
+
+    //TODO migrate to 9.4.0
+    //compile 'com.google.android.gms:play-services-maps:9.4.0'
+    //compile 'com.google.android.gms:play-services-analytics:9.4.0'
+
+
+    
+    //compile 'com.google.android.gms:play-services-maps:9.0.1'
+    //compile 'ёcom.google.android.gms:play-services-analytics:9.0.1'
+    //compile 'com.google.android.gms:play-services-gcm:9.0.1'
+
+
+    //compile 'com.google.android.gms:play-services-maps:8.7.+'
+    //compile 'com.google.android.gms:play-services-analytics:8.7.+'
+
+
+    //compile 'com.google.android.gms:play-services-maps:9.0.1'
+    //compile 'com.google.android.gms:play-services-analytics:9.0.1'
+    
+    
+    //piwik
+    compile 'org.piwik.sdk:piwik-sdk:1.+'
+
+    //parse
+    compile 'com.parse:parse-android:1.13.1'
+
+    //crashlytics                                                    
+    //compile('com.crashlytics.sdk.android:crashlytics:2.6.0@aar') {
+    //    transitive = true;
+    //}
+
+    //clustering
+    //compile 'com.google.maps.android:android-maps-utils:0.4.4'
+    compile 'com.google.maps.android:android-maps-utils:0.4.4'
+
+//    compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
+
+    // social networks
+    //compile 'com.github.asne:asne-vk:0.3.3'
+}
+
+apply plugin: 'com.google.gms.google-services'

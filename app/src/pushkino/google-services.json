@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "254955289987",
+    "project_id": "my-pushkino"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:254955289987:android:809afcaa14132cc3",
+        "android_client_info": {
+          "package_name": "ru.moygorod.pushkino"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDukv9bmVpfpt6FzVl7V7BVDM9-uAeNu8g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-85826318-4"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

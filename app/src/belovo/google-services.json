@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "210769851243",
+    "project_id": "my-belovo"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210769851243:android:ef6bafb559384201",
+        "android_client_info": {
+          "package_name": "ru.moygorod.belovo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBblPEIt5fbn4kZSJX0zt65eaHRkKQQ0lk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-85826318-7"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

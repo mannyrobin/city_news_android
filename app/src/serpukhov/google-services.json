@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "559464527030",
+    "project_id": "my-serpukhov"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:559464527030:android:28e8a08813aaee32",
+        "android_client_info": {
+          "package_name": "ru.moygorod.serpukhov"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-sttsl5GQSwTXPkr-udAE1WP3ubvadYA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-73885724-33"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

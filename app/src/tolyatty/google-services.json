@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "728810994017",
+    "project_id": "my-tolyatty"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:728810994017:android:dad863015c48b3c4",
+        "android_client_info": {
+          "package_name": "ru.moygorod.tolyatty"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkI10-Zhmsk3EA-Zf71kf_Az2tiB3bqZM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-84472766-5"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

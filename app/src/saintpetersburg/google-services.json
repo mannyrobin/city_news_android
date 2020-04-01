@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "400543178227",
+    "project_id": "my-saint-petersburg"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:400543178227:android:22821712980a8441",
+        "android_client_info": {
+          "package_name": "ru.moygorod.saintpetersburg"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6DYpOLxQ41RIG0yy73ZDndho2pmZY2tM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-77768135-7"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

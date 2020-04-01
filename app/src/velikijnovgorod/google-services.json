@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "701528614735",
+    "project_id": "my-velikijnovgorod"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:701528614735:android:326263fc99b3c2c9",
+        "android_client_info": {
+          "package_name": "ru.moygorod.velikijnovgorod"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPzgksafN_Gun7BCFp3GYncv_fQeLikvs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-86361125-3"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

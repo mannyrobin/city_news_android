@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "84976942317",
+    "project_id": "my-perm"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84976942317:android:a476f079e1694477",
+        "android_client_info": {
+          "package_name": "ru.moygorod.perm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClQ2V4JFL8TFXut0pUwHpQKmQtkxijA5A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-84472766-9"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

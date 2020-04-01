@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "firebase-my-domodedovo",
+  "private_key_id": "aa98870a14265874f15ef2592d1d3e186817b1ef",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDsgU0GXCZnNKsm\nHsn9vXW7TYx7q5+QMpmafxaDZ8LqmHihYk6L8TXeicFdHNb+jz+RbOXKSnydlBVQ\nxBXir1GiAHh05U3tlrXb9gHFmg2mC/F8SkR3hX4GdphFL49ABTG3XbJbHazN/HSb\nJa5+AU3/xmri+QSf/5+8WrFlonkZS6noA6vMTYcZLTO7UQdR25UFTCFR73QPOrgZ\n7LFVUxaJIuodmax0HChYbnzuHIbqpd80cSQmRHFUKYViVJZB6SJTgku7FSmXQ6tp\nOt9ccY8qUJW1Pp/rrXDbWUe/6r38IAUjb2eLgM15mTYLvayxPTIEBxKR1du7IHhy\nOMuyVjSnAgMBAAECggEAaS78bbawEbh34cVRunr3kGzl7N6gYYZPkEmzXo/YPXPA\nOq45Fr4ZYjbL+7hm2eIluGzBKh3EnGSOslPzE9U7LhyddgfBh8g+a2xWz2Y7abzo\nEooJN0r0iLVX9XU4dZWZzd5rA2EISLhdt96jY0D7SqUZRobPisUqap+/Q99lklyc\nfI++n7YZdj1sOedkoFEDxpbzmxeZ5HQa+2kjjZU4HLzIOcQdMAFP5ReccxvmTgmz\nJHbaeWDXipEc2odw1gr8a4xxPxm9D0krIh6uJcvWvtUYt1P7c1OYDIg9+ijxO58n\noz4tazOvBzVSx5szY1aLVQVd9HablftbIBYcuNCQUQKBgQD4OBTdGlyYebsM78Iz\nTRZkzD8Er9aejheoANHaADg4ac98SkWSQe6s1c27XHwH0MQBZ3W5rfNNkQEymJ6a\nfQwh/5s3gKgOM/aBnHOttHLJWCAMuF72IzLxC7J3KmcNUM4X78OCLIIBK6Xk+pl1\nLNKON8pmL65QfAiyegLGQ4nt7wKBgQDz6zdslZDDyytEoxtBh0fuqSbhMGO+scBR\n4PHi0rjr7gKJjH+4LQtBd90/xnH6TTyhB3xyzZbFxWr08avV+KHaICCwXmkZuklx\nwc0ISKe4EdVD9TwtXAibIBfZLdt9r/Z+GfKPB7wSM3mnXHcYCvTGJLYidKWLnDPg\n0MXhd3/cyQKBgBYKDLgxDgWv0U7tvuWFM7bRd8r3veuoHCubnwZnPJattnGHurOo\nzQNlnHXFWXHsNGsXf5lz+4VomZ2fdX2sGrauFl8QOlvAe2O4u4Cx4/tCqt3WRQA/\n0dcbPcZc6neBNDtl24skXoqyEHHLWnLP/wYHqB34n9afnLoUIUjvWEDbAoGAezgg\n+I6Z4f75raPD+hdwBCWZSXsbeFLtN6+uIgqXdj/3MisyvgSrQfheYYBLRcnMzgAt\nIwWum9v+Cx0m1GHUyY8fVFltOJz9yyS/AedKKtd/Z+Qz8SokAtF0mrbqwZSprcxH\n129t17f/RceVNiUawBn9lGxe0KcpIfH1dM/cXNkCgYEAiJDRqJKYyo6TIaRPOICv\njgefLgN/4pAE410cLrNrZogwQZbAGJfIGi08QnmuqKQemnosK7KV36T2bInylIfb\nKABc0mXm9L0RRNa4sOJI3w5B/ifesH1zmlCFpXpBXofIubxO2SXdqoxV+ZhX5xOf\nzL/eidXK2nuPe/pGQ/kP4VU=\n-----END PRIVATE KEY-----\n",
+  "client_email": "auth-pub@firebase-my-domodedovo.iam.gserviceaccount.com",
+  "client_id": "114570828876280114310",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/auth-pub%40firebase-my-domodedovo.iam.gserviceaccount.com"
+}

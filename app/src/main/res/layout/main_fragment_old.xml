@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_marginTop="16dp"
+             android:layout_marginBottom="16dp"
+             android:layout_marginLeft="16dp"
+             android:layout_marginRight="16dp"
+
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+    >
+
+    <HorizontalScrollView
+        android:id="@+id/scrollView"
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--
+        <RelativeLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+         >
+         -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            >
+            <!--
+            <TextView
+                android:layout_width="match_parent"
+                android:text="test"
+                android:layout_height="wrap_content"/>
+                -->
+            <!--
+            <LinearLayout
+                          android:layout_width="fill_parent"
+                          android:layout_height="fill_parent"
+                          android:orientation="horizontal"
+                          android:padding="5dip" >
+                          -->
+            <!--
+        <FrameLayout
+
+
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            -->
+            <GridView
+                android:id="@+id/tiles"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+
+                android:gravity="center"
+                android:numColumns="auto_fit"
+
+                android:columnWidth="@dimen/button_grid_size"
+
+                android:horizontalSpacing="@dimen/button_grid_horizontalSpacing"
+                android:verticalSpacing="@dimen/button_grid_verticalSpacing"
+
+                android:stretchMode="spacingWidthUniform"
+                >
+
+                <!--
+                android:stretchMode="columnWidth"
+                android:horizontalSpacing="@dimen/button_grid_horizontalSpacing"
+                android:verticalSpacing="@dimen/button_grid_verticalSpacing"
+                android:background="@color/primary"
+                android:numColumns="auto_fit"
+                android:stretchMode="spacingWidthUniform"
+                android:layout_marginLeft="@dimen/button_grid_horizontalSpacing"
+                android:layout_marginRight="@dimen/button_grid_horizontalSpacing"
+                -->
+                <!--@dimen/button_grid_size-->
+                <!--
+
+
+                android:stretchMode="spacingWidthUniform"
+                -->
+                <!--android:gravity="center_horizontal"-->
+                <!--android:stretchMode="columnWidth"-->
+            </GridView>
+            <!--
+                    </FrameLayout>
+
+                    </LinearLayout>
+                    -->
+            <!--
+       </RelativeLayout>
+        -->
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</FrameLayout>

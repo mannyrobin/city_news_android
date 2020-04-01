@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+    <!--
+        android:background="@drawable/li"
+    -->
+    <ImageView
+        android:id="@+id/item_image"
+        android:layout_width="@dimen/list_image_size"
+        android:layout_height="@dimen/list_image_size"
+        android:layout_centerVertical="true"
+
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:adjustViewBounds="true"
+
+
+        android:layout_marginRight="14dp"
+
+        tools:src="@drawable/events"
+        android:layout_alignParentLeft="true"
+    />
+
+
+<!--android:src="@drawable/main_30"-->
+    <TextView
+        android:id="@+id/item_text"
+
+        android:layout_marginTop="2dp"
+        android:layout_alignParentTop="true"
+        android:maxLines="3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/text_label_color"
+        android:layout_toRightOf="@+id/item_image"
+        tools:text="title"
+    />
+
+    <TextView
+        android:id="@+id/item_address"
+        android:layout_below="@+id/item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textSize="15sp"
+        android:textColor="@color/lt_gray_title_color"
+        android:layout_toRightOf="@+id/item_image"
+        tools:text="address"
+        />
+
+    <TextView
+        android:id="@+id/item_date"
+        android:layout_below="@+id/item_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:textSize="15sp"
+        android:textColor="@color/gray_title_color"
+        android:layout_toRightOf="@+id/item_image"
+        android:drawableLeft="@drawable/icon_18"
+        android:drawablePadding="6dp"
+        tools:text="date"
+        />
+    <!--android:textStyle="bold"-->
+    <!--android:text="Такси"-->
+
+</RelativeLayout>
+
+<!--
+http://stackoverflow.com/questions/32587249/android-button-ripple-on-lollipop-and-highlight-on-pre-lollipop
+http://stackoverflow.com/questions/24607339/lollipop-rippledrawable-vs-selector-for-pre-lollipop
+-->

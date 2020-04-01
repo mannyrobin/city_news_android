@@ -1,0 +1,1490 @@
+<cities>
+  <korolev>
+    <account>d.begovatov@gmail.com</account>
+    <id>3</id>
+    <name>Мой Королев</name>
+    <genitive>Королева</genitive>
+    <version>0.9</version>
+  </korolev>
+  <khimki>
+    <account>d.begovatov@gmail.com</account>
+    <id>2</id>
+    <name>Мои Химки</name>
+    <genitive>Химок</genitive>
+    <version>0.9</version>
+  </khimki>
+  <odintsovo>
+    <account>d.begovatov@gmail.com</account>
+    <id>6</id>
+    <name>Мое Одинцово</name>
+    <genitive>Одинцово</genitive>
+    <version>0.9</version>
+  </odintsovo>
+  <zelenograd>
+    <account>d.begovatov@gmail.com</account>
+    <id>7</id>
+    <name>Мой Зеленоград</name>
+    <genitive>Зеленограда</genitive>
+    <version>0.9</version>
+  </zelenograd>
+  <podolsk>
+    <account>d.begovatov@gmail.com</account>
+    <id>4</id>
+    <name>Мой Подольск</name>
+    <genitive>Подольска</genitive>
+    <version>0.9</version>
+  </podolsk>
+  <krasnogorsk>
+    <account>d.begovatov@gmail.com</account>
+    <id>5</id>
+    <name>Мой Красногорск</name>
+    <genitive>Красногорска</genitive>
+    <version>0.9</version>
+  </krasnogorsk>
+  <mytischi>
+    <account>d.begovatov@gmail.com</account>
+    <id>1</id>
+    <name>Мои Мытищи</name>
+    <genitive>Мытищ</genitive>
+    <version>0.9</version>
+  </mytischi>
+  <lobnya>
+    <account />
+    <id>9</id>
+    <name>Моя Лобня</name>
+    <genitive>Лобни</genitive>
+    <version>0.9</version>
+  </lobnya>
+  <dolgoprudny>
+    <account />
+    <id>8</id>
+    <name>Мой Долгопрудный</name>
+    <genitive>Долгопрудного</genitive>
+    <version>0.9</version>
+  </dolgoprudny>
+  <korkino>
+    <account />
+    <id>11</id>
+    <name>Мой Коркино</name>
+    <genitive>Коркино</genitive>
+    <version>0.9</version>
+  </korkino>
+  <ramenskoe>
+    <account />
+    <id>10</id>
+    <name>Мое Раменское</name>
+    <genitive>Раменского</genitive>
+    <version>0.9</version>
+  </ramenskoe>
+  <balashikha>
+    <account />
+    <id>17</id>
+    <name>Моя Балашиха</name>
+    <genitive>Балашихи</genitive>
+    <version>0.9</version>
+  </balashikha>
+  <ozyorsk>
+    <account />
+    <id>12</id>
+    <name>Мой Озерск</name>
+    <genitive>Озерска</genitive>
+    <version>0.9</version>
+  </ozyorsk>
+  <kyshtym>
+    <account />
+    <id>13</id>
+    <name>Мой Кыштым</name>
+    <genitive>Кыштыма</genitive>
+    <version>0.9</version>
+  </kyshtym>
+  <petrozavodsk>
+    <account />
+    <id>15</id>
+    <name>Мой Петрозаводск</name>
+    <genitive>Петрозаводска</genitive>
+    <version>0.9</version>
+  </petrozavodsk>
+  <bryansk>
+    <account />
+    <id>18</id>
+    <name>Мой Брянск</name>
+    <genitive>Брянска</genitive>
+    <version>0.9</version>
+  </bryansk>
+  <neftekamsk>
+    <account />
+    <id>16</id>
+    <name>Мой Нефтекамск</name>
+    <genitive>Нефтекамска</genitive>
+    <version>0.9</version>
+  </neftekamsk>
+  <syktyvkar>
+    <account />
+    <id>14</id>
+    <name>Мой Сыктывкар</name>
+    <genitive>Сыктывкара</genitive>
+    <version>0.9</version>
+  </syktyvkar>
+  <kaluga>
+    <account />
+    <id>19</id>
+    <name>Моя Калуга</name>
+    <genitive>Калуги</genitive>
+    <version>0.9</version>
+  </kaluga>
+  <samara>
+    <account />
+    <id>21</id>
+    <name>Моя Самара</name>
+    <genitive>Самары</genitive>
+    <version>0.9</version>
+  </samara>
+  <nizhnekamsk>
+    <account />
+    <id>22</id>
+    <name>Мой Нижнекамск</name>
+    <genitive>Нижнекамска</genitive>
+    <version>0.9</version>
+  </nizhnekamsk>
+  <achinsk>
+    <account />
+    <id>23</id>
+    <name>Мой Ачинск</name>
+    <genitive>Ачинска</genitive>
+    <version>0.9</version>
+  </achinsk>
+  <serpukhov>
+    <account />
+    <id>24</id>
+    <name>Мой Серпухов</name>
+    <genitive>Серпухова</genitive>
+    <version>0.9</version>
+  </serpukhov>
+  <sortavala>
+    <account />
+    <id>25</id>
+    <name>Моя Сортавала</name>
+    <genitive>Сортавалы</genitive>
+    <version>0.9</version>
+  </sortavala>
+  <sibai>
+    <account />
+    <id>26</id>
+    <name>Мой Сибай</name>
+    <genitive>Сибая</genitive>
+    <version>0.9</version>
+  </sibai>
+  <reutov>
+    <account />
+    <id>27</id>
+    <name>Мой Реутов</name>
+    <genitive>Реутова</genitive>
+    <version>0.9</version>
+  </reutov>
+  <klin>
+    <account />
+    <id>28</id>
+    <name>Мой Клин</name>
+    <genitive>Клина</genitive>
+    <version>0.9</version>
+  </klin>
+  <magnitogorsk>
+    <account />
+    <id>29</id>
+    <name>Мой Магнитогорск</name>
+    <genitive>Магнитогорска</genitive>
+    <version>0.9</version>
+  </magnitogorsk>
+  <tstenburg>
+    <account />
+    <id>30</id>
+    <name>Мой Тестинбург</name>
+    <genitive>Тестинбурга</genitive>
+    <version>0.9</version>
+  </tstenburg>
+  <zhukovsky>
+    <account />
+    <id>31</id>
+    <name>Мой Жуковский</name>
+    <genitive>Жуковского</genitive>
+    <version>0.9</version>
+  </zhukovsky>
+  <sovetsky>
+    <account />
+    <id>32</id>
+    <name>Мои Югорск и Советский</name>
+    <genitive>Югорска и Советского</genitive>
+    <version>0.9</version>
+  </sovetsky>
+  <mitino>
+    <account />
+    <id>33</id>
+    <name>Мое Митино</name>
+    <genitive>Митино</genitive>
+    <version>0.9</version>
+  </mitino>
+  <saintpetersburg>
+    <account />
+    <id>34</id>
+    <name>Мой Санкт-Петербург</name>
+    <genitive>Санкт-Петербурга</genitive>
+    <version>0.9</version>
+  </saintpetersburg>
+  <brest>
+    <account />
+    <id>35</id>
+    <name>Мой Брест</name>
+    <genitive>Бреста</genitive>
+    <version>0.9</version>
+  </brest>
+  <cherepovets>
+    <account />
+    <id>36</id>
+    <name>Мой Череповец</name>
+    <genitive>Череповца</genitive>
+    <version>0.9</version>
+  </cherepovets>
+  <yeysk>
+    <account />
+    <id>37</id>
+    <name>Мой Ейск</name>
+    <genitive>Ейска</genitive>
+    <version>0.9</version>
+  </yeysk>
+  <kursk>
+    <account />
+    <id>38</id>
+    <name>Мой Курск</name>
+    <genitive>Курска</genitive>
+    <version>0.9</version>
+  </kursk>
+  <minsk>
+    <account />
+    <id>39</id>
+    <name>Мой Минск</name>
+    <genitive>Минска</genitive>
+    <version>0.9</version>
+  </minsk>
+  <kyzyl>
+    <account />
+    <id>40</id>
+    <name>Мой Кызыл</name>
+    <genitive>Кызыла</genitive>
+    <version>0.9</version>
+  </kyzyl>
+  <karaganda>
+    <account />
+    <id>41</id>
+    <name>Моя Караганда</name>
+    <genitive>Караганды</genitive>
+    <version>0.9</version>
+  </karaganda>
+  <pereslavl>
+    <account />
+    <id>42</id>
+    <name>Мой Переславль</name>
+    <genitive>Переславля</genitive>
+    <version>0.9</version>
+  </pereslavl>
+  <saransk>
+    <account />
+    <id>43</id>
+    <name>Мой Саранск</name>
+    <genitive>Саранска</genitive>
+    <version>0.9</version>
+  </saransk>
+  <tomsk>
+    <account />
+    <id>44</id>
+    <name>Мой Томск</name>
+    <genitive>Томска</genitive>
+    <version>0.9</version>
+  </tomsk>
+  <tula>
+    <account />
+    <id>45</id>
+    <name>Моя Тула</name>
+    <genitive>Тулы</genitive>
+    <version>0.9</version>
+  </tula>
+  <taraz>
+    <account />
+    <id>46</id>
+    <name>Мой Тараз</name>
+    <genitive>Тараза</genitive>
+    <version>0.9</version>
+  </taraz>
+  <belgorod>
+    <account />
+    <id>47</id>
+    <name>Мой Белгород</name>
+    <genitive>Белгорода</genitive>
+    <version>0.9</version>
+  </belgorod>
+  <sochi>
+    <account />
+    <id>48</id>
+    <name>Мой Сочи</name>
+    <genitive>Сочи</genitive>
+    <version>0.9</version>
+  </sochi>
+  <ivanteevka>
+    <account />
+    <id>49</id>
+    <name>Моя Ивантеевка</name>
+    <genitive>Ивантеевки</genitive>
+    <version>0.9</version>
+  </ivanteevka>
+  <krasnoyarsk>
+    <account />
+    <id>50</id>
+    <name>Мой Красноярск</name>
+    <genitive>Красноярска</genitive>
+    <version>0.9</version>
+  </krasnoyarsk>
+  <makhachkala>
+    <account />
+    <id>51</id>
+    <name>Моя Махачкала</name>
+    <genitive>Махачкалы</genitive>
+    <version>0.9</version>
+  </makhachkala>
+  <obninsk>
+    <account />
+    <id>52</id>
+    <name>Мой Обнинск</name>
+    <genitive>Обнинска</genitive>
+    <version>0.9</version>
+  </obninsk>
+  <almati>
+    <account />
+    <id>53</id>
+    <name>Мой Алматы</name>
+    <genitive>Алматы</genitive>
+    <version>0.9</version>
+  </almati>
+  <rostovdon>
+    <account />
+    <id>54</id>
+    <name>Ростов-на-лаДони</name>
+    <genitive>Ростова-на-лаДони</genitive>
+    <version>0.9</version>
+  </rostovdon>
+  <beloozersky>
+    <account />
+    <id>55</id>
+    <name>Мой Белоозерский</name>
+    <genitive>Белоозерского</genitive>
+    <version>0.9</version>
+  </beloozersky>
+  <chernushka>
+    <account />
+    <id>56</id>
+    <name>Моя Чернушка</name>
+    <genitive>Чернушки</genitive>
+    <version>0.9</version>
+  </chernushka>
+  <gatchina>
+    <account />
+    <id>57</id>
+    <name>Моя Гатчина</name>
+    <genitive>Гатчины</genitive>
+    <version>0.9</version>
+  </gatchina>
+  <ishim>
+    <account />
+    <id>58</id>
+    <name>Мой Ишим</name>
+    <genitive>Ишима</genitive>
+    <version>0.9</version>
+  </ishim>
+  <sergach>
+    <account />
+    <id>60</id>
+    <name>Мой Сергач</name>
+    <genitive>Сергача</genitive>
+    <version>0.9</version>
+  </sergach>
+  <voronezh>
+    <account />
+    <id>61</id>
+    <name>Мой Воронеж</name>
+    <genitive>Воронежа</genitive>
+    <version>0.9</version>
+  </voronezh>
+  <ufa>
+    <account />
+    <id>62</id>
+    <name>Моя Уфа</name>
+    <genitive>Уфы</genitive>
+    <version>0.9</version>
+  </ufa>
+  <barnaul>
+    <account />
+    <id>63</id>
+    <name>Мой Барнаул</name>
+    <genitive>Барнаула</genitive>
+    <version>0.9</version>
+    <owner>Kirill.Mazun@gmail.com</owner>
+    <gcm_account>moygorod4.mobi@gmail.com</gcm_account>
+    <gmap_account>moygorod4.mobi@gmail.com</gmap_account>
+    <ga_account>moygorod4.mobi@gmail.com</ga_account>
+  </barnaul>
+  <volgograd>
+    <account />
+    <id>65</id>
+    <name>Мой Волгоград</name>
+    <genitive>Волгограда</genitive>
+    <version>0.9</version>
+  </volgograd>
+  <vologda>
+    <account />
+    <id>66</id>
+    <name>Моя Вологда</name>
+    <genitive>Вологды</genitive>
+    <version>0.9</version>
+    <owner>bykov.i.v1989@gmail.com</owner>
+    <gcm_account />
+    <gmap_account />
+    <ga_account>moygorod4.mobi@gmail.com</ga_account>
+  </vologda>
+  <kaliningrad>
+    <account />
+    <id>68</id>
+    <name>Мой Калининград</name>
+    <genitive>Калининграда</genitive>
+    <version>0.9</version>
+    <owner>d.begovatov@gmail.com</owner>
+    <gcm_account />
+    <gmap_account />
+    <ga_account>moygorod4.mobi@gmail.com</ga_account>
+  </kaliningrad>
+  <pushkin>
+    <account />
+    <id>69</id>
+    <name>Мой Пушкин</name>
+    <genitive>Пушкина</genitive>
+    <version>0.9</version>
+  </pushkin>
+  <severodvinsk>
+    <account />
+    <id>70</id>
+    <name>Мой Северодвинск</name>
+    <genitive>Северодвинска</genitive>
+    <version>0.9</version>
+    <owner>allekor24@ya.ru</owner>
+    <gcm_account />
+    <gmap_account />
+    <ga_account>moygorod4.mobi@gmail.com</ga_account>
+  </severodvinsk>
+  <gubkinsky>
+    <account />
+    <id>78</id>
+    <name>Мой Губкинский</name>
+    <genitive>Губкинского</genitive>
+    <version>0.9</version>
+  </gubkinsky>
+  <ulyanovsk>
+    <account />
+    <id>72</id>
+    <name>Мой Ульяновск</name>
+    <genitive>Ульяновска</genitive>
+    <version>0.9</version>
+  </ulyanovsk>
+  <ulyanovsk>
+    <account />
+    <id>72</id>
+    <name>Мой Ульяновск</name>
+    <genitive>Ульяновска</genitive>
+    <version>0.9</version>
+  </ulyanovsk>
+  <kokshektau>
+    <account />
+    <id>73</id>
+    <name>Мой Кокшетау</name>
+    <genitive>Кокшетау</genitive>
+    <version>0.9</version>
+    <owner>kz.aza.kz@mail.ru</owner>
+    <gcm_account />
+    <gmap_account />
+    <ga_account>moygorod4.mobi@gmail.com</ga_account>
+  </kokshektau>
+  <kirov>
+    <account />
+    <id>80</id>
+    <name>Мой Киров</name>
+    <genitive>Кирова</genitive>
+    <version>0.9</version>
+  </kirov>
+  <chapaevsk>
+    <account />
+    <id>82</id>
+    <name>Мой Чапаевск</name>
+    <genitive>Чапаевска</genitive>
+    <version>0.9</version>
+  </chapaevsk>
+  <nizhnynovgorod>
+    <account />
+    <id>64</id>
+    <name>Мой Нижний Новгород</name>
+    <genitive>Нижнего Новгорода</genitive>
+    <version>0.9</version>
+  </nizhnynovgorod>
+  <almetyevsk>
+    <account />
+    <id>81</id>
+    <name>Мой Альметьевск</name>
+    <genitive>Альметьевска</genitive>
+    <version>0.9</version>
+  </almetyevsk>
+  <kirovochepeck>
+    <account />
+    <id>87</id>
+    <name>Мой Чепецк</name>
+    <genitive>Чепецка</genitive>
+    <version>0.9</version>
+  </kirovochepeck>
+  <astana>
+    <account />
+    <id>59</id>
+    <name>Моя Астана</name>
+    <genitive>Астаны</genitive>
+    <version>0.9</version>
+  </astana>
+  <novyurengoy>
+    <account />
+    <id>83</id>
+    <name>Мой Новый Уренгой</name>
+    <genitive>Нового Уренгоя</genitive>
+    <version>0.9</version>
+  </novyurengoy>
+  <novokuznetsk>
+    <account />
+    <id>86</id>
+    <name>Мой Новокузнецк</name>
+    <genitive>Новокузнецка</genitive>
+    <version>0.9</version>
+  </novokuznetsk>
+  <tyumen>
+    <account />
+    <id>90</id>
+    <name>Моя Тюмень</name>
+    <genitive>Тюмени</genitive>
+    <version>0.9</version>
+    <owner>yuriy.reznik@yandex.ru</owner>
+    <gcm_account>moygorod4.mobi@gmail.com</gcm_account>
+    <gmap_account>moygorod4.mobi@gmail.com</gmap_account>
+    <ga_account>moygorod4.mobi@gmail.com</ga_account>
+  </tyumen>
+  <chelyabinsk>
+    <account />
+    <id>92</id>
+    <name>Мой Челябинск</name>
+    <genitive>Челябинска</genitive>
+    <version>0.9</version>
+    <owner>mypocketche@gmail.com</owner>
+    <gcm_account />
+    <gmap_account />
+    <ga_account>moygorod4.mobi@gmail.com</ga_account>
+  </chelyabinsk>
+  <naryanmar>
+    <account />
+    <id>94</id>
+    <name>Мой Нарьян-Мар</name>
+    <genitive>Нарьян-Мара</genitive>
+    <version>0.9</version>
+  </naryanmar>
+  <yekaterinburg>
+    <account />
+    <id>97</id>
+    <name>Мой Екатеринбург</name>
+    <genitive>Екатеринбурга</genitive>
+    <version>0.9</version>
+  </yekaterinburg>
+  <kazan>
+    <account />
+    <id>98</id>
+    <name>Моя Казань</name>
+    <genitive>Казани</genitive>
+    <version>0.9</version>
+  </kazan>
+  <novosibirsk>
+    <account />
+    <id>99</id>
+    <name>Мой Новосибирск</name>
+    <genitive>Новосибирска</genitive>
+    <version>0.9</version>
+  </novosibirsk>
+  <odessa>
+    <account />
+    <id>101</id>
+    <name>Моя Одесса</name>
+    <genitive>Одессы</genitive>
+    <version>0.9</version>
+    <owner>oof.od.ua@gmail.com</owner>
+    <gcm_account />
+    <gmap_account />
+    <ga_account>moygorod4.mobi@gmail.com</ga_account>
+  </odessa>
+  <cheboksary>
+    <account />
+    <id>106</id>
+    <name>Мои Чебоксары</name>
+    <genitive>Чебоксаров</genitive>
+    <version>0.9</version>
+    <owner>sokolovcheb21@gmail.com</owner>
+    <gcm_account />
+    <gmap_account />
+    <ga_account>moygorod4.mobi@gmail.com</ga_account>
+  </cheboksary>
+  <aleksin>
+    <account />
+    <id>107</id>
+    <name>Мой Алексин</name>
+    <genitive>Алексина</genitive>
+    <version>0.9</version>
+    <owner>rapryanik@gmail.com</owner>
+    <gcm_account />
+    <gmap_account />
+    <ga_account>moygorod4.mobi@gmail.com</ga_account>
+  </aleksin>
+  <omsk>
+    <account />
+    <id>111</id>
+    <name>Мой Омск</name>
+    <genitive>Омска</genitive>
+    <version>0.9</version>
+    <owner>yuriy.reznik@yandex.ru</owner>
+    <gcm_account />
+    <gmap_account />
+    <ga_account>moygorod4.mobi@gmail.com</ga_account>
+  </omsk>
+  <verkhnyayapyshma>
+    <account />
+    <id>116</id>
+    <name>Моя Верхняя Пышма</name>
+    <genitive>Верхней Пышмы</genitive>
+    <version>0.9</version>
+    <owner>Ya.ivanov.g.a@gmail.com</owner>
+    <gcm_account />
+    <gmap_account />
+    <ga_account>moygorod4.mobi@gmail.com</ga_account>
+  </verkhnyayapyshma>
+  <kumertau>
+    <account />
+    <id>119</id>
+    <name>Мой Кумертау</name>
+    <genitive>Кумертау</genitive>
+    <version>0.9</version>
+    <owner>aqm@ro.ru</owner>
+    <gcm_account />
+    <gmap_account />
+    <ga_account>moygorod4.mobi@gmail.com</ga_account>
+  </kumertau>
+  <krasnodar>
+    <account>d.begovatov@gmail.com</account>
+    <id>115</id>
+    <name>Мой Краснодар</name>
+    <genitive>Краснодара</genitive>
+    <version>0.9</version>
+    <gcm_account />
+    <gmap_account />
+    <ga_account>moygorod4.mobi@gmail.com</ga_account>
+  </krasnodar>
+  <surgut>
+    <account />
+    <id>105</id>
+    <name>Мой Сургут</name>
+    <genitive>Сургута</genitive>
+    <version>0.9</version>
+    <owner>Moi-surgut@yandex.ru</owner>
+    <gcm_account />
+    <gmap_account />
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </surgut>
+  <nizhnevartovsk>
+    <account />
+    <id>91</id>
+    <name>Нижневартовск</name>
+    <genitive>Нижневартовска</genitive>
+    <version>0.9</version>
+    <owner>moi-nizhnevartovsk@yandex.ru</owner>
+    <gcm_account />
+    <gmap_account />
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </nizhnevartovsk>
+  <domodedovo>
+    <account>d.begovatov@gmail.com</account>
+    <id>74</id>
+    <name>Домодедово</name>
+    <genitive>домодедова</genitive>
+    <version>0.9</version>
+    <owner>myastramobi@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </domodedovo>
+  <sevastopol>
+    <account>d.begovatov@gmail.com</account>
+    <id>135</id>
+    <name>Севастополь</name>
+    <genitive>Севастополя</genitive>
+    <version>0.9</version>
+    <owner>mindoza1@ya.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </sevastopol>
+  <neftejugansk>
+    <account>d.begovatov@gmail.com</account>
+    <id>109</id>
+    <name>Нефтеюганск</name>
+    <genitive>Нефтеюганска</genitive>
+    <version>0.9</version>
+    <owner>moi-nefteyugansk@yandex.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </neftejugansk>
+  <tolyatty>
+    <account>d.begovatov@gmail.com</account>
+    <id>103</id>
+    <name>Тольятти</name>
+    <genitive>Тольятти</genitive>
+    <version>0.9</version>
+    <owner>staya-promo@yandex.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </tolyatty>
+  <donetsk>
+    <account>d.begovatov@gmail.com</account>
+    <id>85</id>
+    <name>Донецк</name>
+    <genitive>Донецка</genitive>
+    <version>0.9</version>
+    <owner>77gorik77@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </donetsk>
+  <bishkek>
+    <account>d.begovatov@gmail.com</account>
+    <id>168</id>
+    <name>Бишкек</name>
+    <genitive>Бишкека</genitive>
+    <version>0.9</version>
+    <owner>ilimkaziev@yandex.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </bishkek>
+  <sergievposad>
+    <account>d.begovatov@gmail.com</account>
+    <id>138</id>
+    <name>Сергиев Посад</name>
+    <genitive>Сергиева Посада</genitive>
+    <version>0.9</version>
+    <owner>filate@bk.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </sergievposad>
+  <perm>
+    <account>d.begovatov@gmail.com</account>
+    <id>130</id>
+    <name>Пермь</name>
+    <genitive>Перми</genitive>
+    <version>0.9</version>
+    <owner>my_perm@yahoo.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </perm>
+  <abakan>
+    <account>d.begovatov@gmail.com</account>
+    <id>191</id>
+    <name>Абакан</name>
+    <genitive>Абакана</genitive>
+    <version>0.9</version>
+    <owner>mr.chesa@list.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </abakan>
+  <kamyshlov>
+    <account>d.begovatov@gmail.com</account>
+    <id>232</id>
+    <name>Камышлов</name>
+    <genitive>Камышлова</genitive>
+    <version>0.9</version>
+    <owner>m.kam1668@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </kamyshlov>
+  <astrahan>
+    <account>d.begovatov@gmail.com</account>
+    <id>108</id>
+    <name>Астрахань</name>
+    <genitive>Астрахани</genitive>
+    <version>0.9</version>
+    <owner>myastramobi@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </astrahan>
+  <ruzaevka>
+    <account>d.begovatov@gmail.com</account>
+    <id>76</id>
+    <name>Рузаевка</name>
+    <genitive>Рузаевки</genitive>
+    <version>0.9</version>
+    <owner>d.begovatov@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </ruzaevka>
+  <yasnogorsk>
+    <account>d.begovatov@gmail.com</account>
+    <id>114</id>
+    <name>Ясногорск</name>
+    <genitive>Ясногорска</genitive>
+    <version>0.9</version>
+    <owner>union-boxing@yandex.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </yasnogorsk>
+  <arhangelsk>
+    <account>d.begovatov@gmail.com</account>
+    <id>96</id>
+    <name>Архангельск</name>
+    <genitive>Архангельска</genitive>
+    <version>0.9</version>
+    <owner>14134@bk.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </arhangelsk>
+  <lipeck>
+    <account>d.begovatov@gmail.com</account>
+    <id>145</id>
+    <name>Липецк</name>
+    <genitive>Липецка</genitive>
+    <version>0.9</version>
+    <owner>brookesia48@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </lipeck>
+  <aleksandrov>
+    <account>d.begovatov@gmail.com</account>
+    <id>131</id>
+    <name>Александров</name>
+    <genitive>Александрова</genitive>
+    <version>0.9</version>
+    <owner>mail@ngorod.info</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </aleksandrov>
+  <chistopol>
+    <account>d.begovatov@gmail.com</account>
+    <id>113</id>
+    <name>Чистополь</name>
+    <genitive>Чистополя</genitive>
+    <version>0.9</version>
+    <owner>rakursmedia@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </chistopol>
+  <penza>
+    <account>d.begovatov@gmail.com</account>
+    <id>75</id>
+    <name>Пенза</name>
+    <genitive>Пензы</genitive>
+    <version>0.9</version>
+    <owner>d.begovatov@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </penza>
+  <ryazan>
+    <account>d.begovatov@gmail.com</account>
+    <id>117</id>
+    <name>Рязань</name>
+    <genitive>Рязани</genitive>
+    <version>0.9</version>
+    <owner>gm.kuznecov@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </ryazan>
+  <pavlovskijposad>
+    <account>d.begovatov@gmail.com</account>
+    <id>133</id>
+    <name>Павловский Посад</name>
+    <genitive>Павловского посада</genitive>
+    <version>0.9</version>
+    <owner>mypavposad@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </pavlovskijposad>
+  <tagil>
+    <account>d.begovatov@gmail.com</account>
+    <id>93</id>
+    <name>Нижний Тагил</name>
+    <genitive>Нижнего Тагила</genitive>
+    <version>0.9</version>
+    <owner>pantika.96@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </tagil>
+  <chishmyidavlekanovo>
+    <account>d.begovatov@gmail.com</account>
+    <id>124</id>
+    <name>Чишмы и Давлеканово</name>
+    <genitive>Чишмов и Давлеканово</genitive>
+    <version>0.9</version>
+    <owner>moi-chishmyanddavlekanovo@yandex.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </chishmyidavlekanovo>
+  <stavropol>
+    <account>d.begovatov@gmail.com</account>
+    <id>146</id>
+    <name>Ставрополь</name>
+    <genitive>Ставрополя</genitive>
+    <version>0.9</version>
+    <owner>pogrebnoi.andrei.86@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </stavropol>
+  <pushkino>
+    <account>d.begovatov@gmail.com</account>
+    <id>84</id>
+    <name>Пушкино</name>
+    <genitive>Пушкино</genitive>
+    <version>0.9</version>
+    <owner>GIA1512@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </pushkino>
+  <tatarsk>
+    <account>d.begovatov@gmail.com</account>
+    <id>88</id>
+    <name>Татарск</name>
+    <genitive>Татарска</genitive>
+    <version>0.9</version>
+    <owner>hoyy@ya.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </tatarsk>
+  <элисты>
+    <account>d.begovatov@gmail.com</account>
+    <id>102</id>
+    <name>Элиста</name>
+    <genitive>elista</genitive>
+    <version>0.9</version>
+    <owner>utazaev@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </элисты>
+  <elista>
+    <account>d.begovatov@gmail.com</account>
+    <id>102</id>
+    <name>Элиста</name>
+    <genitive>Элисты</genitive>
+    <version>0.9</version>
+    <owner>utazaev@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </elista>
+  <belovo>
+    <account>d.begovatov@gmail.com</account>
+    <id>104</id>
+    <name>Белово</name>
+    <genitive>Белово</genitive>
+    <version>0.9</version>
+    <owner>dfagem@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </belovo>
+  <schelkovo>
+    <account>d.begovatov@gmail.com</account>
+    <id>200</id>
+    <name>Щёлково</name>
+    <genitive>Щёлково</genitive>
+    <version>0.9</version>
+    <owner>ovidloga@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </schelkovo>
+  <gomel>
+    <account>d.begovatov@gmail.com</account>
+    <id>182</id>
+    <name>Гомель</name>
+    <genitive>Гомеля</genitive>
+    <version>0.9</version>
+    <owner>essuschenok@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </gomel>
+  <berezniki>
+    <account>d.begovatov@gmail.com</account>
+    <id>118</id>
+    <name>Березники</name>
+    <genitive>Березников</genitive>
+    <version>0.9</version>
+    <owner>MoiBerezniki@bk.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </berezniki>
+  <tazovskij-rajon>
+    <account>d.begovatov@gmail.com</account>
+    <id>235</id>
+    <name>Тазовский район</name>
+    <genitive>Тазовского района</genitive>
+    <version>0.9</version>
+    <owner>tazraion@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </tazovskij-rajon>
+  <hantimansiysk>
+    <account>d.begovatov@gmail.com</account>
+    <id>120</id>
+    <name>Ханты-Мансийск</name>
+    <genitive>Ханты-Мансийска</genitive>
+    <version>0.9</version>
+    <owner>toshi_xaem@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </hantimansiysk>
+  <ust_ilimsk>
+    <account>d.begovatov@gmail.com</account>
+    <id>263</id>
+    <name>Усть-Илимск</name>
+    <genitive>Усть-Илимска</genitive>
+    <version>0.9</version>
+    <owner>grisha-90-90@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </ust_ilimsk>
+  <volzhskiy>
+    <account>d.begovatov@gmail.com</account>
+    <id>112</id>
+    <name>Волжский</name>
+    <genitive>Волжского</genitive>
+    <version>0.9</version>
+    <owner>multismile11@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </volzhskiy>
+  <velikijnovgorod>
+    <account>d.begovatov@gmail.com</account>
+    <id>174</id>
+    <name>Великий Новгород</name>
+    <genitive>Великого Новгорода</genitive>
+    <version>0.9</version>
+    <owner>alexsei3107@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </velikijnovgorod>
+  <rostovvelikiy>
+    <account>d.begovatov@gmail.com</account>
+    <id>122</id>
+    <name>Ростов Великий</name>
+    <genitive>Ростова Великого</genitive>
+    <version>0.9</version>
+    <owner>patrick.star777@yandex.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </rostovvelikiy>
+  <vladivostok>
+    <account>d.begovatov@gmail.com</account>
+    <id>162</id>
+    <name>Владивосток</name>
+    <genitive>Владивостока</genitive>
+    <version>0.9</version>
+    <owner>moy.vladivostok@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </vladivostok>
+  <yalta>
+    <account>d.begovatov@gmail.com</account>
+    <id>139</id>
+    <name>Ялта</name>
+    <genitive>Ялты</genitive>
+    <version>0.9</version>
+    <owner>pvladychin@yandex.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </yalta>
+  <gelengik>
+    <account>d.begovatov@gmail.com</account>
+    <id>170</id>
+    <name>Геленджик</name>
+    <genitive>Геленджика</genitive>
+    <version>0.9</version>
+    <owner>pvladychin@yandex.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </gelengik>
+  <vladimir>
+    <account>d.begovatov@gmail.com</account>
+    <id>169</id>
+    <name>Владимир</name>
+    <genitive>Владимира</genitive>
+    <version>0.9</version>
+    <owner>pvladychin@yandex.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </vladimir>
+  <sovetsk>
+    <account>d.begovatov@gmail.com</account>
+    <id>149</id>
+    <name>Советск</name>
+    <genitive>Советска</genitive>
+    <version>0.9</version>
+    <owner>top5352@yandex.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </sovetsk>
+  <sarov>
+    <account>d.begovatov@gmail.com</account>
+    <id>154</id>
+    <name>Саров</name>
+    <genitive>Сарова</genitive>
+    <version>0.9</version>
+    <owner>mysarov.app@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </sarov>
+  <batumi>
+    <account>d.begovatov@gmail.com</account>
+    <id>193</id>
+    <name>Батуми</name>
+    <genitive>Батуми</genitive>
+    <version>0.9</version>
+    <owner>d.begovatov@gmail.com </owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </batumi>
+  <staryjoskol>
+    <account>d.begovatov@gmail.com</account>
+    <id>161</id>
+    <name>Старый Оскол</name>
+    <genitive>Старого Оскола</genitive>
+    <version>0.9</version>
+    <owner>Jamik364@icloud.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </staryjoskol>
+  <norilsk>
+    <account>d.begovatov@gmail.com</account>
+    <id>160</id>
+    <name>Норильск</name>
+    <genitive>Норильска</genitive>
+    <version>0.9</version>
+    <owner>pevges@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </norilsk>
+  <tver>
+    <account>d.begovatov@gmail.com</account>
+    <id>123</id>
+    <name>Тверь</name>
+    <genitive>Твери</genitive>
+    <version>0.9</version>
+    <owner>daorlov2009@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </tver>
+  <votkinsk>
+    <account>d.begovatov@gmail.com</account>
+    <id>163</id>
+    <name>Воткинск</name>
+    <genitive>Воткинска</genitive>
+    <version>0.9</version>
+    <owner>solomennikov-m@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </votkinsk>
+  <syzran>
+    <account>d.begovatov@gmail.com</account>
+    <id>165</id>
+    <name>Сызрань</name>
+    <genitive>Сызрани</genitive>
+    <version>0.9</version>
+    <owner>mscheglov@rocketmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </syzran>
+  <troick>
+    <account>d.begovatov@gmail.com</account>
+    <id>172</id>
+    <name>Троицк</name>
+    <genitive>Троицка</genitive>
+    <version>0.9</version>
+    <owner>sav7408@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </troick>
+  <izhevsk>
+    <account>d.begovatov@gmail.com</account>
+    <id>272</id>
+    <name>Ижевск</name>
+    <genitive>Ижевска</genitive>
+    <version>0.9</version>
+    <owner>hromov.vtk@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </izhevsk>
+  <nojabrsk>
+    <account>d.begovatov@gmail.com</account>
+    <id>164</id>
+    <name>Ноябрьск</name>
+    <genitive>Ноябрьска</genitive>
+    <version>0.9</version>
+    <owner>vik_89tor@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </nojabrsk>
+  <eniseysklesosibirsk>
+    <account>d.begovatov@gmail.com</account>
+    <id>121</id>
+    <name>Енисейск и Лесосибирск</name>
+    <genitive>Енисейска и Лесосибирска</genitive>
+    <version>0.9</version>
+    <owner>mewars@yandex.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </eniseysklesosibirsk>
+  <aprelevka>
+    <account>d.begovatov@gmail.com</account>
+    <id>206</id>
+    <name>Апрелевка</name>
+    <genitive>Апрелевки</genitive>
+    <version>0.9</version>
+    <owner>chuprynin.k@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </aprelevka>
+  <electrostal>
+    <account>d.begovatov@gmail.com</account>
+    <id>128</id>
+    <name>Электросталь</name>
+    <genitive>Электростали</genitive>
+    <version>0.9</version>
+    <owner>208067@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </electrostal>
+  <irkutsk>
+    <account>d.begovatov@gmail.com</account>
+    <id>205</id>
+    <name>Иркутск</name>
+    <genitive>Иркутска</genitive>
+    <version>0.9</version>
+    <owner>chuprynin.k@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </irkutsk>
+  <simferopol>
+    <account>d.begovatov@gmail.com</account>
+    <id>125</id>
+    <name>Симферополь</name>
+    <genitive>Симферополя</genitive>
+    <version>0.9</version>
+    <owner>moy.simferopol@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </simferopol>
+  <bratsk>
+    <account>d.begovatov@gmail.com</account>
+    <id>159</id>
+    <name>Братск</name>
+    <genitive>Братска</genitive>
+    <version>0.9</version>
+    <owner>kolesov_sn@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </bratsk>
+  <ljubercy>
+    <account>d.begovatov@gmail.com</account>
+    <id>95</id>
+    <name>Люберцы</name>
+    <genitive>Люберцов</genitive>
+    <version>0.9</version>
+    <owner>imanadger@yandex.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </ljubercy>
+  <uhta>
+    <account>d.begovatov@gmail.com</account>
+    <id>110</id>
+    <name>Ухта</name>
+    <genitive>Ухты</genitive>
+    <version>0.9</version>
+    <owner>a.narikin23@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </uhta>
+  <orjol>
+    <account>d.begovatov@gmail.com</account>
+    <id>207</id>
+    <name>Орёл</name>
+    <genitive>Орла</genitive>
+    <version>0.9</version>
+    <owner>myoryol@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </orjol>
+  <miass>
+    <account>d.begovatov@gmail.com</account>
+    <id>171</id>
+    <name>Миасс</name>
+    <genitive>Миасса</genitive>
+    <version>0.9</version>
+    <owner>mrmahonin@yandex.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </miass>
+  <kostanay>
+    <account>d.begovatov@gmail.com</account>
+    <id>196</id>
+    <name>Костанай</name>
+    <genitive>Костанай</genitive>
+    <version>0.9</version>
+    <owner>d.begovatov@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </kostanay>
+  <kolomna>
+    <account>d.begovatov@gmail.com</account>
+    <id>166</id>
+    <name>Коломна</name>
+    <genitive>Коломны</genitive>
+    <version>0.9</version>
+    <owner>my_kolomna@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </kolomna>
+  <kerch>
+    <account>d.begovatov@gmail.com</account>
+    <id>195</id>
+    <name>Керчь</name>
+    <genitive>Керчи</genitive>
+    <version>0.9</version>
+    <owner>rakursmedia@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </kerch>
+  <voskresensk>
+    <account>d.begovatov@gmail.com</account>
+    <id>147</id>
+    <name>Воскресенск</name>
+    <genitive>Воскресенска</genitive>
+    <version>0.9</version>
+    <owner>vachek@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </voskresensk>
+  <salehard>
+    <account>d.begovatov@gmail.com</account>
+    <id>213</id>
+    <name>Салехард</name>
+    <genitive>Салехарда</genitive>
+    <version>0.9</version>
+    <owner>d.begovatov@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </salehard>
+  <bugulma>
+    <account>d.begovatov@gmail.com</account>
+    <id>194</id>
+    <name>Бугульма</name>
+    <genitive>Бугульмы</genitive>
+    <version>0.9</version>
+    <owner>rakursmedia@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </bugulma>
+  <strezhevoy>
+    <account>d.begovatov@gmail.com</account>
+    <id>127</id>
+    <name>Стрежевой</name>
+    <genitive>Стрежевого</genitive>
+    <version>0.9</version>
+    <owner>SergeyBulahov@Mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </strezhevoy>
+  <chita>
+    <account>d.begovatov@gmail.com</account>
+    <id>129</id>
+    <name>Чита</name>
+    <genitive>Читы</genitive>
+    <version>0.9</version>
+    <owner>evgeniyshegaev@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </chita>
+  <tobolsk>
+    <account>d.begovatov@gmail.com</account>
+    <id>175</id>
+    <name>Тобольск</name>
+    <genitive>Тобольска</genitive>
+    <version>0.9</version>
+    <owner>mypocketche@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </tobolsk>
+  <soligorsk>
+    <account>d.begovatov@gmail.com</account>
+    <id>209</id>
+    <name>Солигорск</name>
+    <genitive>Солигорска</genitive>
+    <version>0.9</version>
+    <owner>tnmbel@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </soligorsk>
+  <egorievsk>
+    <account>d.begovatov@gmail.com</account>
+    <id>178</id>
+    <name>Егорьевск</name>
+    <genitive>Егорьевска</genitive>
+    <version>0.9</version>
+    <owner>leonenko.egorevsk@yandex.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </egorievsk>
+  <biysk>
+    <account>d.begovatov@gmail.com</account>
+    <id>179</id>
+    <name>Бийск</name>
+    <genitive>Бийска</genitive>
+    <version>0.9</version>
+    <owner>89612315485@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </biysk>
+  <jaroslavl>
+    <account>d.begovatov@gmail.com</account>
+    <id>144</id>
+    <name>Ярославль</name>
+    <genitive>Ярославля</genitive>
+    <version>0.9</version>
+    <owner>gorod.764437@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </jaroslavl>
+  <kaspijsk>
+    <account>d.begovatov@gmail.com</account>
+    <id>210</id>
+    <name>Каспийск</name>
+    <genitive>Каспийска</genitive>
+    <version>0.9</version>
+    <owner>moykaspiysk@yandex.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </kaspijsk>
+  <zelenodolsk>
+    <account>d.begovatov@gmail.com</account>
+    <id>185</id>
+    <name>Зеленодольск</name>
+    <genitive>Зеленодольска</genitive>
+    <version>0.9</version>
+    <owner>rakursmedia@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </zelenodolsk>
+  <vidnoe>
+    <account>d.begovatov@gmail.com</account>
+    <id>180</id>
+    <name>Видное</name>
+    <genitive>Видного</genitive>
+    <version>0.9</version>
+    <owner>9627454@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </vidnoe>
+  <smolensk>
+    <account>d.begovatov@gmail.com</account>
+    <id>279</id>
+    <name>Смоленск</name>
+    <genitive>Смоленска</genitive>
+    <version>0.9</version>
+    <owner>moysmolensk@yandex.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </smolensk>
+  <tulun>
+    <account>d.begovatov@gmail.com</account>
+    <id>177</id>
+    <name>Тулун</name>
+    <genitive>Тулунa</genitive>
+    <version>0.9</version>
+    <owner>moytulun@bk.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </tulun>
+  <berdsk>
+    <account>d.begovatov@gmail.com</account>
+    <id>214</id>
+    <name>Бердск</name>
+    <genitive>Бердска</genitive>
+    <version>0.9</version>
+    <owner>moyberdsk@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </berdsk>
+  <moskovsky>
+    <account>d.begovatov@gmail.com</account>
+    <id>250</id>
+    <name>Московский</name>
+    <genitive>Московского</genitive>
+    <version>0.9</version>
+    <owner>mymskapp@yandex.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </moskovsky>
+  <vladikavkaz>
+    <account>d.begovatov@gmail.com</account>
+    <id>132</id>
+    <name>Владикавказ</name>
+    <genitive>Владикавказа</genitive>
+    <version>0.9</version>
+    <owner>sosjio0@gmail.com</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </vladikavkaz>
+  <kolpino>
+    <account>d.begovatov@gmail.com</account>
+    <id>189</id>
+    <name>Колпино</name>
+    <genitive>Колпино</genitive>
+    <version>0.9</version>
+    <owner>mykolpino@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </kolpino>
+  <novomoskovsk>
+    <account>d.begovatov@gmail.com</account>
+    <id>217</id>
+    <name>Новомосковск</name>
+    <genitive>Новомосковска</genitive>
+    <version>0.9</version>
+    <owner>artem.baranovskiy.91@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </novomoskovsk>
+  <tosno>
+    <account>d.begovatov@gmail.com</account>
+    <id>190</id>
+    <name>Тосно</name>
+    <genitive>Тосно</genitive>
+    <version>0.9</version>
+    <owner>mytosno@mail.ru</owner>
+    <ga_account>moygorod5.mobi@gmail.com</ga_account>
+  </tosno>
+</cities>

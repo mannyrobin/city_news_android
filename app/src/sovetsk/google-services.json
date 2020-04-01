@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "632559283229",
+    "project_id": "my-sovetsk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632559283229:android:465345b446a69418",
+        "android_client_info": {
+          "package_name": "ru.moygorod.sovetsk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoeuxS8BM_z0_b-vuDrLG6ISdnnBjsmMo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-86768674-3"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

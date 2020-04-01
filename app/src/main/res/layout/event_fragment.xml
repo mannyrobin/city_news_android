@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?android:windowBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:fillViewport="true"
+        android:layout_marginTop="@dimen/form_margin_top"
+        android:layout_marginBottom="@dimen/form_margin_bottom"
+        android:layout_marginLeft="@dimen/form_margin_left"
+        android:layout_marginRight="@dimen/form_margin_right"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+         >
+            <RelativeLayout
+                android:id="@+id/item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/item_image"
+                    android:layout_width="@dimen/list_image_size"
+                    android:layout_height="@dimen/list_image_size"
+                    android:layout_centerVertical="true"
+
+                    android:layout_marginRight="14dp"
+
+                    tools:src="@drawable/events"
+                    android:layout_alignParentLeft="true"
+                    />
+
+                <!--android:src="@drawable/main_30"-->
+                <TextView
+                    android:id="@+id/item_title"
+                    android:layout_marginTop="2dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:layout_toRightOf="@+id/item_image"
+                    tools:text="title"
+                    />
+
+
+                <!--android:textColor="@color/primary"-->
+                <TextView
+                    android:id="@+id/item_date"
+                    android:layout_below="@+id/item_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignWithParentIfMissing="true"
+                    android:layout_marginTop="4dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/date_color"
+                    android:layout_toRightOf="@+id/item_image"
+                    android:drawableLeft="@drawable/icon_18"
+                    android:drawablePadding="6dp"
+                    tools:text="date"
+                    />
+
+                <View style="@style/panelDivider"
+                      android:id="@+id/panelDivider"
+                      android:layout_alignLeft="@+id/item_title"
+                      android:layout_below="@+id/item_date"
+                      android:layout_marginTop="6dp"
+                      android:layout_marginBottom="6dp"
+                    />
+
+                <TextView
+                    android:id="@+id/source"
+                    android:layout_below="@+id/panelDivider"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="@color/gray_title_color"
+                    android:layout_toRightOf="@+id/item_image"
+                    tools:text="link"
+                    />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/photos_title"
+                android:text="@string/photos_title"
+                android:textSize="16sp"
+                android:textColor="@color/gray_title_color"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <HorizontalScrollView
+                android:id="@+id/horzScrollView"
+                android:layout_marginTop="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:id="@+id/linear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="horizontal" >
+                </LinearLayout>
+                <!--android:layout_gravity="center"-->
+            </HorizontalScrollView>
+
+            <View style="@style/panelDivider"
+                  android:id="@+id/panelDivider2"
+                />
+
+            <ru.utils.ExpandableTextView
+                android:id="@android:id/text1"
+                tools:text = "text"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <View style="@style/panelDivider"
+                  android:id="@+id/panelDivider3"
+                />
+
+            <TextView
+                android:id="@+id/price_title"
+                android:text ="@string/price_title"
+                android:textSize="16sp"
+                android:textColor="@color/lt_gray_title_color"
+                android:layout_marginTop="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/price"
+                tools:text = "price"
+                android:textSize="16sp"
+                android:layout_marginTop="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/phones_title"
+                android:text ="@string/phone_title"
+                android:textSize="16sp"
+                android:textColor="@color/lt_gray_title_color"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <!--
+            <TextView
+                android:id="@+id/phones"
+                tools:text = "phones"
+                android:textSize="16sp"
+                android:textColor="@color/text_label_color"
+                android:layout_marginTop="2dp"
+                android:layout_width="match_parent"
+                android:drawableLeft="@drawable/call"
+                android:drawablePadding="6dp"
+                android:layout_height="wrap_content"/>
+            -->
+            <!-- gray_panel_color -->
+
+
+
+            <RelativeLayout
+                android:id="@+id/bottom_frame"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="2dp"
+                android:background="@color/gray_panel_color"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!--android:textColor="@color/primary"-->
+                <TextView
+                    android:id="@+id/item_date2"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+
+                    android:textColor="@color/date_color"
+                    android:drawableTop="@drawable/icon_18"
+                    android:drawablePadding="6dp"
+                    tools:text="date"
+                    />
+
+                <TextView
+                    android:id="@+id/source2"
+                    android:layout_alignWithParentIfMissing="true"
+                    android:layout_below="@+id/item_date2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/gray_title_color"
+                    tools:text="link"
+                    />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

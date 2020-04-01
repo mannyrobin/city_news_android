@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "796696666928",
+    "project_id": "my-kokshektau"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:796696666928:android:8c9f3ce16784e987",
+        "android_client_info": {
+          "package_name": "ru.moygorod.kokshektau"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgWOShCv_1W6UAfD613eCp4LxOeidCMN0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-82068708-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

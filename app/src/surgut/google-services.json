@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "781464397815",
+    "project_id": "my-surgut"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:781464397815:android:e22515556724537c",
+        "android_client_info": {
+          "package_name": "ru.moygorod.surgut"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKwOrEP_FQytf8zrpalG71AJti94-wlu4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-82068708-10"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

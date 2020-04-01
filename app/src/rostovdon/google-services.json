@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "668648711171",
+    "project_id": "my-rostov-na-donu"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:668648711171:android:1bfe2d89680d2193",
+        "android_client_info": {
+          "package_name": "ru.moygorod.rostovdon"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjoLVTVBEbrJMWXT7f_AfpOLrT3TIc1z4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-77768135-27"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

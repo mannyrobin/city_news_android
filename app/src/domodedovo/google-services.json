@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "313629914986",
+    "project_id": "my-domodedovo-18c29"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:313629914986:android:d012f3af726dd657",
+        "android_client_info": {
+          "package_name": "ru.moygorod.domodedovo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaXjO6Np4B5N9mQU67qnFO6zwdNHTMsyc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-84472766-2"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

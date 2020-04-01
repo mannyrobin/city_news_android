@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "876976604908",
+    "project_id": "firebase-my-krasnodar"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:876976604908:android:c9d987f66ff9c0df",
+        "android_client_info": {
+          "package_name": "ru.moygorod.krasnodar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBO0Rx-XlZeya8yb7uBAp6TTF1Y06MzRto"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-82068708-9"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

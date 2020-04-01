@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_id": "my-mytischi",
+    "project_number": "698963128841",
+    "name": "My Mytischi"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:698963128841:android:27103e7d8246de3a",
+        "client_id": "android:ru.moygorod.mytischi",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "ru.moygorod.mytischi",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-73885724-8"
+          }
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 1
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}

@@ -1,0 +1,31 @@
+<resources>
+<!--
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:colorButtonNormal">@color/button</item>
+        <item name="android:statusBarColor">@color/toolbar_dark</item>
+    </style>
+-->
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="SplashProgress" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">@android:color/white</item>
+        <item name="android:progressBackgroundTint">@color/primary_light</item>
+    </style>
+
+    <style name="Main" parent="AppTheme.NoActionBar">
+        <item name="android:windowBackground">@color/primary</item>
+        <item name="android:statusBarColor">@color/toolbar_dark</item>
+    </style>
+    <!--
+        <item name="colorAccent">@color/primary_dark</item>
+        <item name="android:progressBackgroundTint">@color/primary_light</item>
+
+    -->
+</resources>

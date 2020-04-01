@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "311629279109",
+    "project_id": "my-jaroslavl"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:311629279109:android:afef05db54690987",
+        "android_client_info": {
+          "package_name": "ru.moygorod.jaroslavl"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbf8gungeeW-cHCBUzS0ppX3lxgFa5PZg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-87109670-12"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

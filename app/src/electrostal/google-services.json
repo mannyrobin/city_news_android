@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "450104645047",
+    "project_id": "my-electrostal"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:450104645047:android:9525a133bfa60e8a",
+        "android_client_info": {
+          "package_name": "ru.moygorod.electrostal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiGQlBNquFRtzi5XHJ_dJFDv8ZvLQEfpo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-87028257-4"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

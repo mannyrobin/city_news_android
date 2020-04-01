@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "991861926162",
+    "project_id": "my-verkhnyayapyshma"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:991861926162:android:12c5e1e9ec19b16c",
+        "android_client_info": {
+          "package_name": "ru.moygorod.verkhnyayapyshma"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsbG3WM7BANnp1H3MJcpjKPguPRb-vK5Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-82068708-8"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

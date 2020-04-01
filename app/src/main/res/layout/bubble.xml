@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="wrap_content"
+             android:background="@android:color/transparent"
+             android:layout_height="wrap_content">
+
+    <!-- TODO 250dip - set different values for ldpi, mdpi, hdpi, xdpi-->
+ 	<RelativeLayout
+        android:id="@+id/bubble"
+
+        android:layout_gravity="fill_horizontal"
+        android:layout_width="250dip"
+        android:layout_height="wrap_content"
+
+
+ 		android:background="@drawable/bubble"
+ 		
+ 		>
+ 		<!-- 
+ 		android:visibility="gone"
+ 		 -->
+ 		 <!-- android:text="Entrance fee: Varies" -->        
+        <TextView 
+             
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+
+            android:layout_marginLeft="6dp"
+            android:textColor="#333333"
+            android:textSize="12sp"/>
+
+        <!--
+            android:layout_marginTop="4dp"
+            android:layout_toLeftOf="@+id/bubbleclose"
+          -->
+
+        <!-- android:text="Tel: 0207 723 4646" -->
+        <TextView 
+            android:id="@+id/snippet"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="10dp"
+
+            android:layout_marginTop="6dp"
+            android:maxLines="6"
+            android:textColor="#777777"
+            android:textSize="12sp"/>
+
+    <!--
+                android:autoLink="web|email"
+    -->
+        <!--
+ 	    <ImageButton 
+                android:id="@+id/bubbleclose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+
+                android:layout_marginBottom="3dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginTop="1dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/bubble_cross"/>
+        -->
+ 	    
+</RelativeLayout>
+
+</FrameLayout>

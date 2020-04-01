@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/pin"
+
+        android:adjustViewBounds="true"
+        android:layout_marginLeft="@dimen/org_list_item_margin_left"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:visibility="gone"
+        android:layout_marginTop="8dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"/>
+    <!--android:visibility="gone"-->
+    <!--android:layout_toRightOf="@+id/pin"-->
+
+    <ImageView
+        android:id="@+id/phone"
+        tools:src="@drawable/events"
+        android:adjustViewBounds="true"
+        android:layout_marginRight="@dimen/org_list_item_margin_right"
+
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/item_text"
+        android:layout_marginTop="4dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"/>
+
+    <!--
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="8dp"
+    -->
+
+    <TextView
+        android:id="@+id/item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_toRightOf="@+id/pin"
+        android:layout_toLeftOf="@+id/phone"
+        android:layout_marginTop="8dp"
+        android:layout_alignWithParentIfMissing="true"
+        android:textColor="@color/text_label_color"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="4dp"
+        android:layout_marginLeft="@dimen/org_list_item_margin_left"
+        tools:text="Name"
+    />
+    <!--
+        android:drawableLeft="@drawable/icon_03"
+        android:drawablePadding="8dp"
+    -->
+    <!--        android:text="title"
+    -->
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/gray_title_color"
+        android:layout_below="@+id/item_text"
+        android:layout_marginRight="@dimen/org_list_item_margin_right"
+        android:layout_marginLeft="@dimen/org_list_item_margin_left"
+        tools:text="Address"
+        />
+    <!--android:text="адрес" -->
+
+    <TextView
+        android:id="@+id/working_hours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+
+        android:textColor="@color/lt_gray_title_color"
+        android:layout_below="@+id/address"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginRight="@dimen/org_list_item_margin_right"
+        android:layout_marginLeft="@dimen/org_list_item_margin_left"
+        tools:text="Working hours"
+        />
+
+    <!--android:textStyle="bold"-->
+    <!--android:text="Такси"-->
+
+</RelativeLayout>
+
+<!--
+http://stackoverflow.com/questions/32587249/android-button-ripple-on-lollipop-and-highlight-on-pre-lollipop
+http://stackoverflow.com/questions/24607339/lollipop-rippledrawable-vs-selector-for-pre-lollipop
+-->

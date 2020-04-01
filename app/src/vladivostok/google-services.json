@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "899640335779",
+    "project_id": "my-vladivostok"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899640335779:android:b9c5ac3764c15288",
+        "android_client_info": {
+          "package_name": "ru.moygorod.vladivostok"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwSLFb5QNoU4gMweDn2pGeTwHgZ-fDt90"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-86361125-5"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

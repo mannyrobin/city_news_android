@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "797748386466",
+    "project_id": "my-bishkek"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:797748386466:android:bafd040b147ab795",
+        "android_client_info": {
+          "package_name": "ru.moygorod.bishkek"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCe4i8nlV5d3e0Epyak_3fZ6YBrQ0Xcsl0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-84472766-7"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

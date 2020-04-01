@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "531096115511",
+    "project_id": "my-reutov"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531096115511:android:71b718e1943fa6b6",
+        "android_client_info": {
+          "package_name": "ru.moygorod.reutov"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdLJr9J0ZG4Li5Bfvz-zOrlbSZH_kflNo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-73885724-49"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

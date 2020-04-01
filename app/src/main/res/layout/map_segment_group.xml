@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<info.hoang8f.android.segmented.SegmentedGroup
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/segment_group"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+
+    segmentedgroup:sc_border_width="1dp"
+    segmentedgroup:sc_checked_text_color="@color/primary"
+    segmentedgroup:sc_tint_color="@android:color/white"
+
+
+    segmentedgroup:sc_corner_radius="10dp">
+    <!--segmentedgroup:sc_tint_color="@color/button"-->
+    <RadioButton
+        android:id="@+id/working"
+        style="@style/RadioButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+
+        android:text="@string/s1"
+        />
+
+    <RadioButton
+        android:id="@+id/all"
+        style="@style/RadioButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:text="@string/s2"
+        />
+
+</info.hoang8f.android.segmented.SegmentedGroup>

@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "696165441320",
+    "project_id": "my-elista"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:696165441320:android:2aa5c1880358381d",
+        "android_client_info": {
+          "package_name": "ru.moygorod.elista"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtnuLPFWAEb0M_QQezTZlTbMrhEczi8Ic"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-85826318-6"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

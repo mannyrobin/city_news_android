@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "452583684097",
+    "project_id": "my-tomsk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452583684097:android:2543d07249ec9f04",
+        "android_client_info": {
+          "package_name": "ru.moygorod.tomsk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKkTVnY-C7I_3hW2NCFEqdRhX9cOhx72E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-77768135-18"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

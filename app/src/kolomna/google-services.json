@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "395557561384",
+    "project_id": "my-kolomna"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:395557561384:android:d5ef82f6f548b882",
+        "android_client_info": {
+          "package_name": "ru.moygorod.kolomna"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmcJWRKZugF2KgkBXyHgprb17FOgDYN0E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-87109670-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "821268859914",
+    "project_id": "my-yasnogorsk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:821268859914:android:6b701c3fb70263c4",
+        "android_client_info": {
+          "package_name": "ru.moygorod.yasnogorsk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAb_lYKPiIenA3v5HaqhPGjxsBpv6-Q2DQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-84689266-5"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

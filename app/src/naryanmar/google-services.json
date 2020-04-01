@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "258786026233",
+    "project_id": "my-naryan-mar"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:258786026233:android:2c76273bbcca0d90",
+        "android_client_info": {
+          "package_name": "ru.moygorod.naryanmar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjSZt7kfsbyke_G7obu_s68zhXSSp5_uA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-79761043-15"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

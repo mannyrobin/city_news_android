@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "350246409858",
+    "project_id": "my-pereslavl"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350246409858:android:d75ccd4ec623aae9",
+        "android_client_info": {
+          "package_name": "ru.moygorod.pereslavl"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFqWN6G8YmW5BGLRvnh8cq9Yb69pD3AhY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-77768135-16"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

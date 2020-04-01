@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "593844407645",
+    "project_id": "my-aleksandrov"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593844407645:android:a0c8c4e3592fe698",
+        "android_client_info": {
+          "package_name": "ru.moygorod.aleksandrov"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJsNYxlBPhtoPdpLHM2NXZsax0pg09J4A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-84689266-8"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

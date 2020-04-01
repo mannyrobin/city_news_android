@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "924148323422",
+    "project_id": "my-sergievposad"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:924148323422:android:d08e29dc7e60d314",
+        "android_client_info": {
+          "package_name": "ru.moygorod.sergievposad"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuCLyzL0wcSp_JU8bVXtK1bJdqZXQQylY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-84472766-8"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

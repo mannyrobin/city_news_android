@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "190895836077",
+    "project_id": "my-tazovskij-rajon"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:190895836077:android:cfe21d775d8491b1",
+        "android_client_info": {
+          "package_name": "ru.moygorod.tazovskij_rajon"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtf77MQdg9KDuQGVINpKYtgr3h3g9Sm9Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-85826318-11"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

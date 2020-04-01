@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "815052945619",
+    "project_id": "my-achinsk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:815052945619:android:2e8805c4693b3833",
+        "android_client_info": {
+          "package_name": "ru.moygorod.achinsk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDInloWf7KlhVo7XgxHdN3CGV03Jafvw6c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-73885724-32"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "853628495157",
+    "project_id": "my-lipeck"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:853628495157:android:ae5f8e90ba6a3e37",
+        "android_client_info": {
+          "package_name": "ru.moygorod.lipeck"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWtW6UDq-NMIunEVsgYHW1HcrdZzEM0uA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-84689266-7"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

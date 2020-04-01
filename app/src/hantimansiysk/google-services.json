@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "890357262638",
+    "project_id": "my-hantimansiysk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:890357262638:android:a3e834a30ab7a618",
+        "android_client_info": {
+          "package_name": "ru.moygorod.hantimansiysk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCilvQoWHGGueYZ2OkHOj9ov6xeGT923AY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-85826318-12"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

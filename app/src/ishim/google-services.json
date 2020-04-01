@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "220499873871",
+    "project_id": "my-ishim"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:220499873871:android:d1d2398ba56913b6",
+        "android_client_info": {
+          "package_name": "ru.moygorod.ishim"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA--MOESVO3qklw9ykMtQI356qAXZwxRtA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-77768135-31"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

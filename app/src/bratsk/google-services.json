@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "301706008935",
+    "project_id": "my-bratsk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:301706008935:android:904d5c1c2714f030",
+        "android_client_info": {
+          "package_name": "ru.moygorod.bratsk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNvhB84n9NWUj13jwPXrVmrXkufGA5f_Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-87028257-7"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

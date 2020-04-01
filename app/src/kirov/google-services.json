@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "1091444487211",
+    "project_id": "my-kirov"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1091444487211:android:aa860bcc2356a12a",
+        "android_client_info": {
+          "package_name": "ru.moygorod.kirov"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBc_efCsuwOtW4ytm_N3do93BJPeQz5_o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-79761043-8"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

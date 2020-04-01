@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "188108982192",
+    "project_id": "my-novy-urengoy"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:188108982192:android:94cabfc75aaf58ea",
+        "android_client_info": {
+          "package_name": "ru.moygorod.novyurengoy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIDxXSdgBRcxg_e4OVjKvvBamiRnU3Dbc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-79761043-14"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

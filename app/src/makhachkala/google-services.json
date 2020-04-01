@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "400329565370",
+    "project_id": "my-makhachkala"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:400329565370:android:5632f2258b8bf57f",
+        "android_client_info": {
+          "package_name": "ru.moygorod.makhachkala"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9yTl1fWFT-cVINuIgljok7rI-20By8MM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-77768135-25"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

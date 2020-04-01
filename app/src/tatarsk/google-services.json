@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "742224871332",
+    "project_id": "my-tatarsk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742224871332:android:28e6e603f65e41d0",
+        "android_client_info": {
+          "package_name": "ru.moygorod.tatarsk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKlnYmOwfPzXzudpqaZ5_mF5MZTPjL4UA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-85826318-5"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+	<color name='primary'>#FFD800</color>
+	<color name='primary_dark'>#FFC700</color>
+	<color name="primary_selected">#FFF200</color>
+	<color name='primary_light'>#FFFC00</color>
+	<color name='intro_bottom_panel'>#FFE800</color>
+	<color name="button_normal">#87BFE4</color>
+	<color name="button_highlight">#447FBC</color>
+	<color name='text_label_color'>#FFC700</color>
+	<color name='text_link'>#9963D0</color>
+</resources>

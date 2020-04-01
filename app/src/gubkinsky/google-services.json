@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "1082324658337",
+    "project_id": "my-gubkinsky"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1082324658337:android:3dcaee3f438c497f",
+        "android_client_info": {
+          "package_name": "ru.moygorod.gubkinsky"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdkWOy6_4h_u9SIG0KrNVLbBJsUcOi-zE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-79761043-5"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

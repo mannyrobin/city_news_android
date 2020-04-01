@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "846150580484",
+    "project_id": "my-aleksin"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:846150580484:android:2bbfb4dc45306ec5",
+        "android_client_info": {
+          "package_name": "ru.moygorod.aleksin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhEfOsL6ygEhA3K3nhBKZKpiBGr8SKuPY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-82068708-7"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

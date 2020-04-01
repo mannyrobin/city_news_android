@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "399679232693",
+    "project_id": "my-astrahan"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399679232693:android:931ed07b8ce6d361",
+        "android_client_info": {
+          "package_name": "ru.moygorod.astrahan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOqWnkLEz4Ux-tIYycD3zrOcs6ndlqQf0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-84689266-3"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

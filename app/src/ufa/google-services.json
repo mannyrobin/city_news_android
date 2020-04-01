@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "532831766361",
+    "project_id": "my-ufa"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:532831766361:android:71a9587f1e955abe",
+        "android_client_info": {
+          "package_name": "ru.moygorod.ufa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXm_iqCd6shfCkYB8eO5zTzIMr3JRbP2g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-79761043-2"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

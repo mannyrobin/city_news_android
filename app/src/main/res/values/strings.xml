@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Настройки</string>
+
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="error">Ошибка</string>
+
+    <string name="get_data_error">Ошибка получения данных. Проверьте Интернет соединение.</string>
+    <string name="start_error">Проверьте Интернет соединение и перезапустите приложение.</string>
+    <string name="action_search">Поиск</string>
+    <string name="working_hours_title">ЧАСЫ РАБОТЫ:</string>
+
+    <string name="schedule">График работы:</string>
+    <string name="round_the_clock">Круглосуточно</string>
+    <string name="today">Сегодня</string>
+    <string name="yesterday">Вчера</string>
+    <string name="source">Источник:</string>
+    <string name="extv_less">&lt; Свернуть</string>
+    <string name="extv_more">Читать дальше &gt;</string>
+    <string name="price_title">СТОИМОСТЬ:</string>
+    <string name="photos_title">ФОТОГРАФИИ:</string>
+    <string name="phone_title">ТЕЛЕФОН ОРГАНИЗАТОРА:</string>
+    <string name="phones_title">ТЕЛЕФОНЫ ОРГАНИЗАТОРА:</string>
+    <string name="add_event_title_prompt">Оставьте заявку на добавление мероприятия и мы обязательно перезвоним вам в ближайшее время</string>
+    <string name="add_org_title_prompt">Оставьте заявку на добавление организации и мы обязательно перезвоним вам в ближайшее время</string>
+    <string name="input_name_prompt">Введите имя</string>
+    <string name="input_name_phone">Оставьте свой номер телефона</string>
+    <string name="button_send_order">Отправить заявку</string>
+    <string name="add_organization_footer">Мы свяжемся с вами в ближайшее время</string>
+    <string name="seg_button_contacts">Контакты</string>
+    <string name="seg_button_info">Информация</string>
+    <string name="seg_button_working_time">Время работы</string>
+    <string name="address">АДРЕС:</string>
+    <string name="phone">ТЕЛЕФОН:</string>
+    <string name="site">САЙТ:</string>
+    <string name="about_1">Мы постоянно находимся в поиске новых идей.\nВозникли предложения или вопросы по сотрудничеству?</string>
+    <string name="about_2">Звоните!</string>
+    <string name="about_team_title">Команда проекта</string>
+
+    <string name="s1">Работают сейчас</string>
+    <string name="s2">Показать все</string>
+
+    <string name="s3">Имя должно быть задано!</string>
+    <string name="s4">Номер телефона должен быть задан!</string>
+    <string name="s5">На карте</string>
+    <string name="s6">Акции</string>
+    <string name="s7">Ошибка обновления данных. Проверьте соединение c Интернетом.</string>
+
+    <string name="push_warning_title">Получайте уведомления о важных событиях %1$s!</string>
+    <string name="push_warning_text">Разрешите уведомления, будьте в курсе новостей, событий и акций, происходящих в нашем городе!</string>
+
+    <string name="push_warning_allow">РАЗРЕШИТЬ</string>
+    <string name="push_warning_skip">ПРОПУСТИТЬ</string>
+
+    <string name="push_confirm">Разрешить приложению отправлять уведомления?</string>
+    <string name="push_confirm_allow">Разрешить</string>
+    <string name="push_confirm_skip">Отказаться</string>
+    <string name="further">Далее</string>
+    <string name="begin">Начать пользоваться</string>
+    <string name="s8">Введите более 2-х символов</string>
+    <string name="s9">Заявка успешно отправлена!</string>
+    <string name="s10">Обновление данных&#8230;</string>
+    <string name="s11">Загрузка данных&#8230;</string>
+
+    <string name="social_network_auth">Авторизация в соцсетях</string>
+    <string name="button_social_network_login_vk">Авторизация в vk</string>
+</resources>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base application theme. -->
+    <!--
+    Base application theme, dependent on API level. This theme is replaced
+    by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+-->
+    <!-- Theme.AppCompat.Light.DarkActionBar -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light" >
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+        <!--
+        <item name="android:fitsSystemWindows">true</item>
+        -->
+
+    </style>
+
+
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/primary</item>
+    </style>
+
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- Customize your theme here. -->
+<!--
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+-->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:textColorLink">@color/text_link</item>
+        <item name="colorButtonNormal">@color/button_normal</item>
+        <item name="colorControlHighlight">@color/primary_selected</item>
+
+        <!--
+        <item name="colorControlHighlight">?attr/colorControlHighlight</item>
+        -->
+        <!--
+        <item name="colorControlHighlight">@color/colorControlHighlight</item>
+        -->
+    </style>
+
+    <style name="Main" parent="AppTheme.NoActionBar">
+        <item name="android:windowBackground">@color/primary</item>
+    </style>
+
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.PopupOverlay"  parent="ThemeOverlay.AppCompat.Light"/>
+
+
+    <style name="panelDivider">
+        <item name="android:layout_marginTop">@dimen/divider_indent</item>
+        <item name="android:layout_marginBottom">@dimen/divider_indent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/panel_divider_h</item>
+        <item name="android:background">@drawable/panel_divider</item>
+    </style>
+
+    <style name="AppTheme.Button" parent="Base.Widget.AppCompat.Button">
+        <item name="colorControlHighlight">@color/button_highlight</item>
+        <item name="colorButtonNormal">@color/button_normal</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme.Button.White" parent="Base.Widget.AppCompat.Button">
+        <item name="colorControlHighlight">@color/button_highlight</item>
+        <item name="colorButtonNormal">@android:color/white</item>
+        <item name="android:textColor">@drawable/button_white</item>
+    </style>
+
+
+    <!--
+    <style name="OrgRadioButton" parent="RadioButton">
+        <item name="android:textColor">@drawable/org_button_text_color</item>
+    </style>
+    -->
+    <!--
+    <style name="ActionBar.nameText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+
+        <item name="android:textColor">@color/PrimaryTextColor</item>
+        <item name="android:textStyle">bold</item>
+
+        <item name="android:textSize">20sp</item>
+
+    </style>-->
+
+    <style name="SplashProgress" parent="Theme.AppCompat.Light">
+    </style>
+
+
+
+</resources>
+
+
+
+<!--
+https://www.materialpalette.com
+http://www.materialup.com/
+-->

@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "287413604637",
+    "project_id": "my-sibai"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:287413604637:android:f96b86682917a1af",
+        "android_client_info": {
+          "package_name": "ru.moygorod.sibai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlMmLK4sW88lDyVOopo3KtSc0kjLMFh14"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-73885724-44"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

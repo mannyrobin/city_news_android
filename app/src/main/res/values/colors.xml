@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- 
+  This file was auto-generated.
+  Changes to this file may cause incorrect behavior
+  and will be lost if the file is regenerated.
+ -->
+<resources>
+    <!--
+  <color name='shadow'>#d8d8d8</color>
+  <color name='button_shadow'>#f0f0f0</color>
+  -->
+    <!--
+    <color name='button_shadow'>#eeeeee</color>
+    <color name='button_shadow'>#cfcfcf</color>
+    -->
+    <color name='button_shadow'>#dadada</color>
+
+
+<!--
+    <color name='button_frame'>#d8d8d8</color>
+    -->
+    <color name='button_frame'>#ebebeb</color>
+
+
+
+
+</resources>

@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "823918272186",
+    "project_id": "my-yekaterinburg"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823918272186:android:0190fb783f3f67fb",
+        "android_client_info": {
+          "package_name": "ru.moygorod.yekaterinburg"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtkY6FTTeNHS_CT-ge14gpkz2Sa8hztZc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-79761043-18"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

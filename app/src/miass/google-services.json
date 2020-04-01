@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "701490088836",
+    "project_id": "my-miass"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:701490088836:android:b5ce74d86eaa2aa7",
+        "android_client_info": {
+          "package_name": "ru.moygorod.miass"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAszDRsIe4eRIeGbrExVYrx01g8CHL9RQA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-87028257-11"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

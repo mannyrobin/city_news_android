@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "420728216767",
+    "project_id": "my-barnaul"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:420728216767:android:b81cba0fdd886870",
+        "android_client_info": {
+          "package_name": "ru.moygorod.barnaul"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEfvZJ0PmYnH8cP6GvokY5OASt5r34Moo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-79761043-22"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

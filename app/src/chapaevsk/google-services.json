@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "451945198038",
+    "project_id": "my-chapaevsk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451945198038:android:0842c0d70b25a7dc",
+        "android_client_info": {
+          "package_name": "ru.moygorod.chapaevsk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8EdL2x2omDQVoJx8M9tRQ8iE1Rty3y2U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-79761043-9"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

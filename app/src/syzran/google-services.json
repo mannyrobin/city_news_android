@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "508261459228",
+    "project_id": "my-syzran"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508261459228:android:e5f30def42a4040d",
+        "android_client_info": {
+          "package_name": "ru.moygorod.syzran"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2O5dZDF7vUFudqrOA_f0zNWzVpduxoXI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-86768674-10"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

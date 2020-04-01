@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+	<color name='primary'>#4F81B6</color>
+	<color name='primary_dark'>#33619B</color>
+	<color name="primary_selected">#7DB3DB</color>
+	<color name='primary_light'>#71A6D2</color>
+	<color name='intro_bottom_panel'>#5F94C5</color>
+	<color name="button_normal">#A9D573</color>
+	<color name="button_highlight">#7ABC44</color>
+	<color name='text_label_color'>#33619B</color>
+	<color name='text_link'>#9963D0</color>
+</resources>

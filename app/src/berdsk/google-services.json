@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "161265491500",
+    "project_id": "my-berdsk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161265491500:android:6e29b73528e59679",
+        "android_client_info": {
+          "package_name": "ru.moygorod.berdsk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5YEoz7-gpbNpNNdVPaymZ8-tseU_jvCM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-87393505-7"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "76902926733",
+    "project_id": "my-severodvinsk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:76902926733:android:944eb70131ee98fc",
+        "android_client_info": {
+          "package_name": "ru.moygorod.severodvinsk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFliZIojXW9uU-fRhfbn5iZaBrGiUu0Cc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-79761043-24"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

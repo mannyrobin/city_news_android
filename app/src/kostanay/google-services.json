@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "187636381026",
+    "project_id": "my-kostanay"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:187636381026:android:6c31230ea1b7c873",
+        "android_client_info": {
+          "package_name": "ru.moygorod.kostanay"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2M-dxFbRYAZCTwL90fF1YV3I1c9ewouc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-87028257-12"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

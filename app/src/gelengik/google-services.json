@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "2754015887",
+    "project_id": "my-gelengik"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2754015887:android:6b4e123a676d939b",
+        "android_client_info": {
+          "package_name": "ru.moygorod.gelengik"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaNNwrf3F5lvAUkilsbRFwoKCXj_m9MLM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-86768674-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

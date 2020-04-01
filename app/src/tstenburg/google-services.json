@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "157974209944",
+    "project_id": "my-tstenburg"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:157974209944:android:cb5875dcf87048a3",
+        "android_client_info": {
+          "package_name": "ru.moygorod.tstenburg"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbx7V_74X-81jnfA9IPQCLuWW2XFFj7Pc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-77768135-5"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

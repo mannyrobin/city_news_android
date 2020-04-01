@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "171151149214",
+    "project_id": "my-magnitogorsk-7b76d"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:171151149214:android:afc12dae77767f73",
+        "android_client_info": {
+          "package_name": "ru.moygorod.magnitogorsk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCD9duYMXE16PgwVEg4-bVVxrRI3FSkFk4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-77768135-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

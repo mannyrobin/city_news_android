@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "317989606421",
+    "project_id": "my-kumertau"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317989606421:android:4366a654e2a17da7",
+        "android_client_info": {
+          "package_name": "ru.moygorod.kumertau"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJA5ZCpQtQCz-BIHlIa1bDtREivBXy5Kg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-82068708-3"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

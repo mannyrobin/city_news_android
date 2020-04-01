@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+	<color name="main">#639ed0</color>
+	<color name="statusbar">#4480bd</color>
+	<color name="slider">#5692c8</color>
+	<color name="background_main">#f7f5f0</color>
+	<color name="background_content">#ffffff</color>
+	<color name="text">#030303</color>
+	<color name="text_header">#bbb3a2</color>
+	<color name="text_grey">#7a7a7a</color>
+	<color name="text_link">#639ed0</color>
+	<color name="rating">#f5a623</color>
+	<color name="rating_grey">#dedede</color>
+	<color name="attention">#fe3824</color>
+	<color name="button_normal">#bbb3a2</color>
+	<color name="button_highlight">#a29884</color>
+	<color name="tap_highlight">#6faad7</color>
+	<color name="tap_lowlight">#80bce3</color>
+	<color name="bottombar_color">#FFFFFF</color>
+	<color name="bottombar_background">#2A2A2A</color>
+</resources>

@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<menu xmlns:android='http://schemas.android.com/apk/res/android'>
+  <group android:id='@+id/grp1' android:checkableBehavior='single'>
+    <item android:title='@string/menu_item_main'
+          android:icon="@drawable/sidebar_home"
+          android:id='@+id/menu_item_main' />
+      <!--android:icon="@drawable/main_menu_09"-->
+    <item android:title='@string/menu_item_categories'
+          android:icon="@drawable/sidebar_catalogue"
+          android:id='@+id/menu_item_categories' />
+      <!--android:icon="@drawable/main_menu_19"-->
+
+      <item android:title='@string/menu_item_placard'
+            android:icon="@drawable/sidebar_afisha"
+          android:id='@+id/menu_item_placard' />
+
+      <item
+          android:title='@string/menu_item_actions'
+          android:icon="@drawable/sidebar_actions"
+          android:id='@+id/menu_item_actions'/>
+
+
+      <!--android:icon="@drawable/main_menu_29"-->
+
+      <item android:title='@string/menu_item_news'
+            android:icon="@drawable/sidebar_news"
+          android:id='@+id/menu_item_news' />
+      <!--android:icon="@drawable/main_menu_39"-->
+
+      <item android:title='@string/menu_item_notifications'
+            android:icon="@drawable/sidebar_news"
+          android:id='@+id/menu_item_notifications'
+          android:visible="false" />
+  </group>
+
+  <group android:id='@+id/grp2' android:checkableBehavior='single'>
+    <item android:title='@string/menu_item_add_organization'
+          android:icon="@drawable/main_menu_49"
+          android:id='@+id/menu_item_add_organization' />
+
+
+    <item android:title='@string/menu_item_add_event'
+          android:icon="@drawable/main_menu_49"
+          android:id='@+id/menu_item_add_event' />
+  </group>
+
+  <group android:id='@+id/grp3' android:checkableBehavior='single'>
+    <item android:title='@string/menu_item_about'
+          android:icon="@drawable/main_menu_59"
+          android:id='@+id/menu_item_about' />
+  </group>
+
+  <group android:id='@+id/grp4' android:checkableBehavior='single'>
+    <item android:title='@string/menu_item_social_login'
+          android:icon="@drawable/main_menu_59"
+          android:id='@+id/menu_item_social_login' 
+          android:visible="false" />
+  </group>
+</menu>

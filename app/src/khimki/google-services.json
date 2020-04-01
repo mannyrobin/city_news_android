@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_id": "my-khimki",
+    "project_number": "669809804617",
+    "name": "My Khimki"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:669809804617:android:30b287e1d5249ef8",
+        "client_id": "android:ru.moygorod.khimki",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "ru.moygorod.khimki",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-73885724-3"
+          }
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 1
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}

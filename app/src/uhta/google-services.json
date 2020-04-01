@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "769489693024",
+    "project_id": "my-uhta"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:769489693024:android:12a2f83a7ddcf8d3",
+        "android_client_info": {
+          "package_name": "ru.moygorod.uhta"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_R1udqmH6_1xZXrSLWJpVZBO5qQVCSh4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-87028257-9"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "209223240812",
+    "project_id": "firebase-my-odessa"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:209223240812:android:04b36fd6b1a03569",
+        "android_client_info": {
+          "package_name": "ru.moygorod.odessa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_KDC51jGXEbefXzdNxC82CZIH3xxcfMA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-82068708-4"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

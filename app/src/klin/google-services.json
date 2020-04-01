@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "823503423263",
+    "project_id": "my-klin"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823503423263:android:3e9bf866b8bf649b",
+        "android_client_info": {
+          "package_name": "ru.moygorod.klin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_3quGHJEpuIC1Zn3oOdat1BqJcuekohQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-73885724-50"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

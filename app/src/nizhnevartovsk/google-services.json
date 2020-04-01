@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "246097427478",
+    "project_id": "my-nizhnevartovsk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246097427478:android:3fb3d9b71c17f2cd",
+        "android_client_info": {
+          "package_name": "ru.moygorod.nizhnevartovsk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVU9qd_kYRxHAm_guVbmVhwAR2Zve4UNU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-82068708-11"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

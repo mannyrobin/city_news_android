@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "103976643605",
+    "project_id": "firebase-my-ust-ilimsk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:103976643605:android:3ec1e0fcc95a109b",
+        "android_client_info": {
+          "package_name": "ru.moygorod.ust_ilimsk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAN1XzMX4uvn7IW-v6G1ePbOR2t1FXA2h4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-86361125-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

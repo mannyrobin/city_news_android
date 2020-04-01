@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "345014391474",
+    "project_id": "my-sochi"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:345014391474:android:ad895127f8e145e7",
+        "android_client_info": {
+          "package_name": "ru.moygorod.sochi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDINQeMT0tjwcRs_-dfp7CdrGeIVH6D1Nw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-77768135-22"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

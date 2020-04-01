@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+    >
+
+    <View
+        android:id="@android:id/text1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        />
+
+    <!--
+    <ru.utils.ExpandableHeightListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/list_bg"
+        android:divider="@android:color/transparent"
+
+        android:clipToPadding="false"
+
+        android:paddingBottom="@dimen/list_margin_bottom"
+        android:paddingTop="@dimen/list_margin_bottom"
+        android:dividerHeight="6dp"
+    />
+    -->
+    <ru.utils.ExpandableHeightListView
+
+    android:id="@+id/list"
+    android:layout_width="match_parent"
+    android:background="@android:color/white"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/list_margin_bottom"
+    android:paddingTop="2dp"
+
+    android:clipToPadding="false"
+        />
+    <!--android:paddingTop="@dimen/list_margin_top"-->
+    <!--android:background="@android:color/white"-->
+</FrameLayout>
+
+
+    <!--
+        android:paddingBottom="@dimen/list_margin_bottom"
+        android:paddingTop="@dimen/list_margin_top"
+    -->
+
+    <!--
+                    android:background="@color/list_light_gray"
+                    android:dividerHeight="0dp"
+                    android:divider="@android:color/transparent"
+    -->
+

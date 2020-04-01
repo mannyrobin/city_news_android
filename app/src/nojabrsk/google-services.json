@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "386493199193",
+    "project_id": "my-nojabrsk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:386493199193:android:f58fa786885b4959",
+        "android_client_info": {
+          "package_name": "ru.moygorod.nojabrsk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkjB-4y2XQ0UxMX7AmpmcALvwmDYJQPZg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-87028257-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

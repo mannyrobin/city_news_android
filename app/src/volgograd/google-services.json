@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "788114047386",
+    "project_id": "my-volgograd"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:788114047386:android:f7563fc5f9a0e9b4",
+        "android_client_info": {
+          "package_name": "ru.moygorod.volgograd"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtMYtKkIR-da_1w5Q5yGgifNzPLYUlAFw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-79761043-6"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

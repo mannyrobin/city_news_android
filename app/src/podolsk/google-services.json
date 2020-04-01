@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_id": "my-podolsk",
+    "project_number": "945772799596",
+    "name": "My Podolsk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:945772799596:android:8b0f894b238633b0",
+        "client_id": "android:ru.moygorod.podolsk",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "ru.moygorod.podolsk",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-73885724-2"
+          }
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 1
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}

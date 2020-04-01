@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "904275357702",
+    "project_id": "my-schelkovo"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:904275357702:android:a873cb3931bfbfd2",
+        "android_client_info": {
+          "package_name": "ru.moygorod.schelkovo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrIwpBirSH9FF4BmRWj_q-Iw3uGr3lCAU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-85826318-8"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

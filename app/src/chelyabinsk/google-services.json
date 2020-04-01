@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "439490129169",
+    "project_id": "my-chelyabinsk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:439490129169:android:9e443f306ebd9488",
+        "android_client_info": {
+          "package_name": "ru.moygorod.chelyabinsk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1KXkMdCGpnGwxD01yVr8_-F-rdGjpSEY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-82068708-5"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

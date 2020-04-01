@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "947449796273",
+    "project_id": "my-novosibirsk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:947449796273:android:7970a669bda7d2ec",
+        "android_client_info": {
+          "package_name": "ru.moygorod.novosibirsk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBC9-YBwANXLx_3UG9h1bwCz90AWL1yyEI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-79761043-20"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_id": "my-samara",
+    "project_number": "46234901462",
+    "name": "My Samara"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:46234901462:android:06b5f62147a8f77c",
+        "client_id": "android:ru.moygorod.samara",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "ru.moygorod.samara",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-73885724-20"
+          }
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 1
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}

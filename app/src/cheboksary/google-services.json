@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "808997750827",
+    "project_id": "my-cheboksary"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808997750827:android:96ff5e031760edcb",
+        "android_client_info": {
+          "package_name": "ru.moygorod.cheboksary"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARG9E8JWFYQAQQ_zlPSHhNBHozrkKHFBc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-82068708-6"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

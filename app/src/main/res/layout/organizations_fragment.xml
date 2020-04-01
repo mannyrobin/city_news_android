@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+             android:background="?android:windowBackground"
+    >
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/list_bg"
+        android:divider="@android:color/transparent"
+
+        android:dividerHeight="6dp"
+
+        android:clipToPadding="false"
+
+        android:paddingBottom="@dimen/list_margin_bottom"
+        android:paddingTop="@dimen/list_margin_top"
+        />
+
+<!--
+                android:background="@color/list_light_gray"
+                android:dividerHeight="0dp"
+                android:divider="@android:color/transparent"
+-->
+
+</FrameLayout>

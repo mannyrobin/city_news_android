@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "798951385635",
+    "project_id": "my-orjol"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:798951385635:android:6bc51ac9efee64ff",
+        "android_client_info": {
+          "package_name": "ru.moygorod.orjol"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAz1SGFdiIn5g1op44sgzmCc6RLPEpdJhM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-87028257-10"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

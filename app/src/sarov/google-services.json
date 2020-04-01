@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "229796220794",
+    "project_id": "my-sarov"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:229796220794:android:bc8d3d7352cde94f",
+        "android_client_info": {
+          "package_name": "ru.moygorod.sarov"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJXqEkhvGzemtI40EhmSozHtVXmnI3rGM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-86768674-4"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

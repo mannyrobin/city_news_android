@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "62650951254",
+    "project_id": "my-ryazan"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:62650951254:android:d5ad053005493bc1",
+        "android_client_info": {
+          "package_name": "ru.moygorod.ryazan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2woo_yumD9b_hbsk-1UeRLMyEJyj0kCg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-84689266-11"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

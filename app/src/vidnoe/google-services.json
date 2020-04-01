@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "793416545588",
+    "project_id": "my-vidnoe"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:793416545588:android:a678be45ab89ed20",
+        "android_client_info": {
+          "package_name": "ru.moygorod.vidnoe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC18I4E31EDJKFgti5g_82-fhuv2Xi_E_U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-87393505-4"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

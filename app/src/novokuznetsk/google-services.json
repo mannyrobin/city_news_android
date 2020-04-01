@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "709582759689",
+    "project_id": "my-novokuznetsk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709582759689:android:ac94fac3bc90067d",
+        "android_client_info": {
+          "package_name": "ru.moygorod.novokuznetsk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGGDjzKTH6cFwR74iKIWZBAIBuOcubxLA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-79761043-16"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

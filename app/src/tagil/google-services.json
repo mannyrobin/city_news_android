@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "956278103603",
+    "project_id": "my-tagil"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956278103603:android:0f81f06240ff60ff",
+        "android_client_info": {
+          "package_name": "ru.moygorod.tagil"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKtePC6X-QAuy78NjbVWZBaaV_5sfkjMw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-85826318-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

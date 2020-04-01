@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "538155865114",
+    "project_id": "my-gomel"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538155865114:android:5d4e349edbcbc5a5",
+        "android_client_info": {
+          "package_name": "ru.moygorod.gomel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwOVXCioQMpNy_a0x1l9WJ7_j6NRWSPP0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-85826318-9"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

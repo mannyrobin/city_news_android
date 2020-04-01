@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "129077114279",
+    "project_id": "my-voronezh"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:129077114279:android:68cf2eb659836252",
+        "android_client_info": {
+          "package_name": "ru.moygorod.voronezh"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQj0lDs2ueue4cNbQufiw7NXAmYRvYLWw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-79761043-4"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

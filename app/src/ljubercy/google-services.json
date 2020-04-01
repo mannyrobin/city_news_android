@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "884299416213",
+    "project_id": "my-ljubercy"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:884299416213:android:c8b6d1bf2b09d3dc",
+        "android_client_info": {
+          "package_name": "ru.moygorod.ljubercy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFbKgSEWsbbJXzp3zG-M_JaG8Y5m4RPE0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-87028257-8"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

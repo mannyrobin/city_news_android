@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="?android:windowBackground"
+    >
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/form_margin_bottom"
+        android:layout_marginLeft="@dimen/form_margin_left"
+        android:layout_marginRight="@dimen/form_margin_right"
+
+        android:layout_marginTop="@dimen/form_margin_top"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <!--
+            <TextView
+                android:layout_width="match_parent"
+                android:text="test"
+                android:layout_height="wrap_content"/>
+             -->
+            <!--
+            <include layout="@layout/news_list_item"
+                     android:id="@+id/item"
+                     android:background="@android:color/transparent"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                />
+            -->
+
+            <RelativeLayout
+                android:id="@+id/item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/item_image"
+                    android:layout_width="@dimen/list_image_size"
+                    android:layout_height="@dimen/list_image_size"
+                    android:layout_alignParentLeft="true"
+
+                    android:layout_centerVertical="true"
+
+                    android:layout_marginRight="14dp"
+                    tools:src="@drawable/news"
+                    />
+
+                <TextView
+                    android:id="@+id/item_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="2dp"
+                    android:layout_toRightOf="@+id/item_image"
+                    android:textColor="@color/lt_gray_title_color"
+                    android:textSize="15sp"
+                    tools:text="date"/>
+
+                <!--android:src="@drawable/main_30"-->
+                <TextView
+                    android:id="@+id/item_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/item_date"
+                    android:layout_marginTop="4dp"
+                    android:layout_toRightOf="@+id/item_image"
+                    android:textColor="@color/text_label_color"
+                    android:textSize="16sp"
+                    tools:text="title"
+                    />
+                <!--android:textStyle="bold"-->
+                <!--android:text="Такси"-->
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/source"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/item"
+                android:layout_marginTop="6dp"
+                android:textSize="16sp"
+                tools:text="source"/>
+
+            <View
+                android:id="@+id/panelDivider"
+                style="@style/panelDivider"
+                android:layout_below="@+id/source"
+                />
+
+
+
+            <TextView
+                android:id="@android:id/text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/panelDivider"
+                android:layout_marginTop="4dp"
+                android:textSize="16sp"
+                tools:text="text"/>
+            <!-- android:autoLink="web"-->
+        </RelativeLayout>
+
+    </ScrollView>
+
+</FrameLayout>

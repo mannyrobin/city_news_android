@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?android:windowBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ProgressBar
+        android:id="@android:id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        />
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:fillViewport="true"
+        android:layout_marginTop="@dimen/form_margin_top"
+        android:layout_marginBottom="@dimen/form_margin_bottom"
+        android:layout_marginLeft="@dimen/form_margin_left"
+        android:layout_marginRight="@dimen/form_margin_right"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+         >
+
+            <TextView
+                android:id="@android:id/text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/gray_title_color"
+                tools:text="@string/add_event_title_prompt"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                />
+
+            <View style="@style/panelDivider"
+                  android:layout_marginTop="10dp"
+                  android:layout_marginBottom="6dp"
+                />
+
+            <EditText
+                android:id="@+id/name"
+                android:textSize="16sp"
+                android:hint="@string/input_name_prompt"
+                android:inputType="textPersonName"
+                android:drawableLeft="@drawable/icon_03"
+                android:drawablePadding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <!--
+            <View style="@style/panelDivider"
+                  android:layout_marginTop="6dp"
+                  android:layout_marginBottom="6dp"
+                />
+            -->
+            <EditText
+                android:id="@+id/phone"
+                android:textSize="16sp"
+                android:inputType="phone"
+                android:hint="@string/input_name_phone"
+                android:drawableLeft="@drawable/icon_05"
+                android:layout_marginTop="4dp"
+                android:drawablePadding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <!--
+            <View style="@style/panelDivider"
+                  android:layout_marginTop="6dp"
+                  android:layout_marginBottom="6dp"
+                />
+            -->
+
+            <Button
+                android:id="@android:id/button1"
+                android:theme="@style/AppTheme.Button"
+                android:layout_marginTop="10dp"
+                android:text="@string/button_send_order"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/gray_title_color"
+                android:text="@string/add_organization_footer"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+
+                />
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
+

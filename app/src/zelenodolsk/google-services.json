@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "96305435559",
+    "project_id": "my-zelenodolsk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:96305435559:android:6ab68196de15fe54",
+        "android_client_info": {
+          "package_name": "ru.moygorod.zelenodolsk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2TExyRR2PGOuGte_-50jTKfs1avw359U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-87393505-3"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

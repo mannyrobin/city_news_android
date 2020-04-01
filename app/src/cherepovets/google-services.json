@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "774265078284",
+    "project_id": "my-cherepovets"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:774265078284:android:079d58d81dc7219a",
+        "android_client_info": {
+          "package_name": "ru.moygorod.cherepovets"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_DcLYDh3_rh2zQs2x0rMzV4XDytss5aI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-77768135-9"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "742997267583",
+    "project_id": "my-troick"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742997267583:android:931e3e51c9d1d73e",
+        "android_client_info": {
+          "package_name": "ru.moygorod.troick"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRVhP3U4HLrjeHhVpvCe8l-LrwWytZiuc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-86768674-11"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

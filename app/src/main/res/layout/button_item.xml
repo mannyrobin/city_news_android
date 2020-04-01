@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:background="@drawable/button_frame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+    >
+
+    <ImageView
+        android:id="@+id/item_image"
+        android:layout_width="48dp"
+        android:layout_marginTop="18dp"
+        android:layout_height="48dp"
+        android:layout_centerHorizontal="true"
+
+
+        tools:src="@drawable/main_30"
+        />
+
+    <TextView
+        android:id="@+id/item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@drawable/label_text"
+        android:gravity="center_horizontal"
+        />
+    <!--android:maxLines="2"-->
+</RelativeLayout>
+<!--
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:background="@drawable/button_frame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+    >
+
+    <ImageView
+        android:id="@+id/item_image"
+        android:layout_width="48dp"
+
+        android:layout_height="48dp"
+        android:layout_centerHorizontal="true"
+
+
+        android:layout_marginTop="8dp"
+        tools:src="@drawable/main_30"
+    />
+
+    <TextView
+        android:id="@+id/item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_below="@+id/item_image"
+        android:layout_marginTop="@dimen/button_marginTop"
+        android:layout_centerHorizontal="true"
+        android:textColor="@drawable/label_text"
+        android:gravity="center_horizontal"
+        android:textAllCaps="true"
+    />
+</RelativeLayout>
+-->
+    <!--android:textStyle="bold"-->
+    <!--android:text="Такси"-->
+
+
+    <!--
+    http://stackoverflow.com/questions/32587249/android-button-ripple-on-lollipop-and-highlight-on-pre-lollipop
+    http://stackoverflow.com/questions/24607339/lollipop-rippledrawable-vs-selector-for-pre-lollipop
+    -->

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="intro1_title">Привет!</string>
+    <string name="intro1_text">Спасибо, что ты скачал приложение \"%1$s\" - первое и единственное приложение нашего города</string>
+    <string name="intro_name">@string/app_name</string>
+    <string name="intro2_text">В нашем приложении есть вся самая необходимая информация о городе, которой легко можно воспользоваться на ходу:</string>
+    <string name="intro3_title">Основная польза от приложения:</string>
+    <string name="intro3_opt1">Быстрый доступ к популярным категориям</string>
+    <string name="intro3_opt2">Карта однотипных организаций поблизости</string>
+    <string name="intro3_opt3">Время работы каждого заведения</string>
+    <string name="intro3_opt4">Уведомления о мероприятиях и свежих новостях города</string>
+    <string name="intro3_opt5">Справочник работает без подключения к интернету</string>
+</resources>

@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "112633913813",
+    "project_id": "my-bugulma"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:112633913813:android:4468e697f03045e9",
+        "android_client_info": {
+          "package_name": "ru.moygorod.bugulma"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABFFarvOsp1ngMJ3UTsJI1sGBbstbzS4o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-87109670-5"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

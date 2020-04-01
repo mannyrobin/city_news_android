@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "54007012102",
+    "project_id": "my-donetsk"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54007012102:android:cf5f4f008026a81a",
+        "android_client_info": {
+          "package_name": "ru.moygorod.donetsk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIoQpJQzmYG9UlaQn7fnvOmPg7iwzs12A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-84472766-6"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
