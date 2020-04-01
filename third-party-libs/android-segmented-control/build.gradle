@@ -1,0 +1,32 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.3'
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+
+apply plugin: 'com.android.library'
+
+
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "24.0.2"
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+
+dependencies {
+     compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
