@@ -1,0 +1,464 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: "generate.gradle"
+
+import javax.xml.parsers.DocumentBuilderFactory
+import javax.xml.xpath.XPathFactory
+import java.nio.MappedByteBuffer
+import java.nio.channels.Channels
+import java.nio.channels.FileChannel
+import java.nio.channels.FileChannel.MapMode
+import java.nio.channels.ReadableByteChannel
+import java.nio.file.Files
+import java.nio.file.Path
+import java.util.zip.ZipEntry
+import java.util.zip.ZipFile
+
+buildscript 
+{
+    repositories 
+    {
+        jcenter()
+    }
+    dependencies {
+        //classpath 'com.android.tools.build:gradle:1.3.0'
+        //classpath 'com.google.gms:google-services:2.+'
+        //classpath 'com.google.gms:google-services:2.+'
+        //classpath 'com.android.tools.build:gradle:2.+'
+
+        classpath 'com.android.tools.build:gradle:2.2.3'
+        
+        //classpath 'com.google.gms:google-services:2.1.+'
+        //classpath 'com.google.gms:google-services:2.+'
+        classpath 'com.google.gms:google-services:3.0.0'
+        
+
+        classpath 'com.github.triplet.gradle:play-publisher:1.+'
+
+    
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+
+
+task generate << {
+
+  if (project.hasProperty('prj')) 
+  {
+      generate(prj,'app/src/main')        
+
+  }
+  else
+  {
+      throw new GradleException('Please set parameter like -Pprj=zelenograd')
+  }
+
+}
+
+
+// in - string url
+// out - string path
+def downloadAssets(def inUrl, def outPath)
+{
+    println "Download assets from '$inUrl' to '$outPath'";
+
+    URL                 assets_link = new URL(inUrl);
+    ReadableByteChannel rbc         = Channels.newChannel(assets_link.openStream());
+    FileOutputStream    fos         = new FileOutputStream(rootProject.file(outPath));
+    fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+    fos.close();
+}
+
+// in - string path to zip
+// out - string path to folder
+def extractZip(def inPath, def outPath)
+{
+    println "Extract zip from '$inPath' to '$outPath/*'";
+
+    def exclude_filter = [
+        "DS_Store",
+        "b4.png",
+        "icon_10.png",
+        "ok.png",
+        "push_notification_on.png"
+    ].toArray();
+
+    rootProject.file(outPath).mkdirs();
+    extractFolder(rootProject.file(inPath), rootProject.file(outPath), exclude_filter);
+}
+
+task upgrade_design_city << {
+    if (false == project.hasProperty("city_name") || false == project.hasProperty("design_name"))
+        throw new GradleException("Please set parameter like -Pcity_name=zelenograd -Pdesign_name=Zelenograd");
+
+    def download_url = "";
+    if (true == project.hasProperty("url"))
+        download_url = "$url";
+    if (0 == download_url.length())
+        download_url = "http://lab.pixiedesign.ru/projects/z/assets.zip";
+
+    println "Upgrade design city '$city_name' from '$design_name', download from '$download_url'";
+
+    def city_path   = "app/src/$city_name";
+    def google_path = "external/google_play/assets/$city_name";
+    def temp_path   = "tmp/" + System.currentTimeMillis();
+    
+    rootProject.file(city_path).mkdirs();
+    rootProject.file(google_path).mkdirs();
+    rootProject.file(temp_path).mkdirs();
+
+    // download assets
+    downloadAssets(download_url, "$temp_path/assets.zip");
+
+    // extract assets to temp dir
+    extractZip("$temp_path/assets.zip", "$temp_path/assets");
+
+    // upgrade design
+    def google_src_path = "$temp_path/assets/$design_name/android/google_play"; // $temp_path/assets/android/assets/$design_name/google_play/*
+    println "Merge from '$google_src_path/*' to 'external/google_play/assets/$city_name/*'";
+    mergeFolder(
+        rootProject.file(google_src_path), 
+        rootProject.file("external/google_play/assets/$city_name")
+    );
+    System.gc();
+    deleteDirectory(rootProject.file(google_src_path));
+
+    def assets_src_path = "$temp_path/assets/$design_name/android"; // $temp_path/assets/android/assets/$design_name
+    println "Merge from '$assets_src_path/*' to 'app/src/$city_name/res/*'";
+    mergeFolder(
+        rootProject.file(assets_src_path), 
+        rootProject.file("app/src/$city_name/res")
+    );
+    System.gc();
+    println "Remove '$city_path/res/icons'"
+    deleteDirectory(rootProject.file("$city_path/res/icons"));
+
+    println "Remove temp path '$temp_path'";
+    deleteDirectory(rootProject.file("$temp_path"));
+}
+
+task new_city << {
+    if (false == project.hasProperty("city_name") || false == project.hasProperty("design_name"))
+        throw new GradleException("Please set parameter like -Pcity_name=zelenograd -Pdesign_name=Zelenograd");
+
+    def download_url = "";
+    if (true == project.hasProperty("url"))
+        download_url = "$url";
+    if (0 == download_url.length())
+        download_url = "http://lab.pixiedesign.ru/projects/z/assets.zip";
+
+    println "Loading new city '$city_name' from '$design_name', download from '$download_url'";
+
+    def city_path   = "app/src/$city_name";
+    def google_path = "external/google_play/assets/$city_name";
+    def temp_path   = "tmp/" + System.currentTimeMillis();
+
+
+    def city_folder = rootProject.file(city_path);
+
+    if (true == city_folder.exists())
+    {
+        if (false == city_folder.isDirectory() || 0 != city_folder.list().length)
+            throw new GradleException("Path '$city_path' already exists and not empty");
+    }
+
+    city_folder.mkdirs();
+    rootProject.file(temp_path).mkdirs();
+
+    // download assets
+    downloadAssets(download_url, "$temp_path/assets.zip");
+
+
+    // extract assets to temp dir
+    extractZip("$temp_path/assets.zip", "$temp_path/assets");
+
+    // move assets to city project
+    //def google_src_path = "$temp_path/assets/android/assets/$design_name/google_play";
+    def google_src_path = "$temp_path/assets/$design_name/android/google_play";
+    println "Move '$google_src_path' => '$google_path'"
+    rootProject.file("external/google_play/assets/$city_name").mkdirs();
+    java.nio.file.Files.move (
+        rootProject.file(google_src_path).toPath(), 
+        rootProject.file(google_path).toPath(), 
+        java.nio.file.StandardCopyOption.REPLACE_EXISTING
+    );
+
+    //def assets_src_path = "$temp_path/assets/android/assets/$design_name";
+    def assets_src_path = "$temp_path/assets/$design_name/android";
+    println "Move '$assets_src_path' => '$city_path/res'"
+    rootProject.file("$city_path/res").mkdirs();
+    java.nio.file.Files.move (
+        rootProject.file(assets_src_path).toPath(), 
+        rootProject.file("$city_path/res").toPath(), 
+        java.nio.file.StandardCopyOption.REPLACE_EXISTING
+    );
+    deleteDirectory(rootProject.file("$city_path/res/icons"));
+
+    java.nio.file.Files.copy (
+        rootProject.file("external/google_play/assets/default/google-services.json").toPath(), 
+        rootProject.file("$city_path/google-services.json").toPath(), 
+        java.nio.file.StandardCopyOption.REPLACE_EXISTING
+    );
+
+    java.nio.file.Files.copy (
+        rootProject.file("external/google_play/assets/default/google_play_android_developer-b1161f45f857.json").toPath(), 
+        rootProject.file("$city_path/google_play_android_developer-b1161f45f857.json").toPath(), 
+        java.nio.file.StandardCopyOption.REPLACE_EXISTING
+    );
+
+    def gitignoreFile = rootProject.file("$city_path/.gitignore");
+    gitignoreFile.write("/assets");
+
+    // create city project.properties
+    def xpath       = XPathFactory.newInstance().newXPath();
+    def builder     = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+    def file_stream = new FileInputStream (rootProject.file ("app/cities.xml"));
+    def records     = builder.parse(file_stream).documentElement;
+
+    def p = new Properties();
+
+    p.id       = xpath.evaluate("//cities/$city_name/id", records);
+    p.name     = xpath.evaluate("//cities/$city_name/name", records);
+    p.genitive = xpath.evaluate("//cities/$city_name/genitive", records);
+    p.version  = xpath.evaluate("//cities/$city_name/version", records);
+    p.google_maps_key            = "TODO_change_to_real_google_maps_key-google_maps_android_api_key_city_name";
+    p.gcm_server_api_key         = "TODO_change_to_real_gcm_server_api_key";
+    p.gcm_sender_id              = "TODO_change_to_real_gcm_sender_id";
+    p.com_parse_application_id   = "TODO_change_to_real_com_parse_application_id";
+    p.com_parse_client_key       = "TODO_change_to_real_com_parse_client_key";
+    p.google_play_track          = "alpha";
+    p.google_play_json_file_name = "google_play_android_developer-b1161f45f857.json";
+
+    if (
+        true == p.id.isEmpty() 
+        || true == p.name.isEmpty()
+        || true == p.genitive.isEmpty()
+    )
+        throw new GradleException(
+            "Invalid data for city '$city_name' in file 'app/cities.xml':"
+            + " id = '" + p.id + "'"
+            + " name = '" + p.name + "'"
+            + " genitive = '" + p.genitive + "'"
+        );
+
+    if (true == p.version.isEmpty())
+        p.version = "1.0";
+
+    p.store(
+        new OutputStreamWriter(
+            new FileOutputStream (rootProject.file ("$city_path/project.properties")), "UTF-8"
+        ), 
+        ""
+    );
+
+    deleteDirectory(rootProject.file("$temp_path"));
+}
+
+def extractFolder(File zipFile, File extractFolder, def excludeFilter)
+{
+    int BUFFER = 2048;
+
+    ZipFile zip = new ZipFile(zipFile);
+    String newPath = extractFolder.toString();
+
+    new File(newPath).mkdir();
+    Enumeration zipFileEntries = zip.entries();
+
+    // Process each entry
+    while (zipFileEntries.hasMoreElements())
+    {
+        // grab a zip file entry
+        ZipEntry entry = (ZipEntry) zipFileEntries.nextElement();
+        String currentEntry = entry.getName();
+        String currentEntryFileName = 
+            (currentEntry.lastIndexOf("/") != -1) ? 
+                currentEntry.substring(currentEntry.lastIndexOf("/") + 1, currentEntry.length())
+                :
+                ""
+            ;
+        //println "entry: '$currentEntryFileName'"
+        if (true == Arrays.asList(excludeFilter).contains(currentEntryFileName))
+            continue;
+
+        File destFile = new File(newPath, currentEntry);
+        //destFile = new File(newPath, destFile.getName());
+        File destinationParent = destFile.getParentFile();
+
+        // create the parent directory structure if needed
+        destinationParent.mkdirs();
+
+        if (!entry.isDirectory())
+        {
+            BufferedInputStream is = new BufferedInputStream(zip.getInputStream(entry));
+            int currentByte;
+            // establish buffer for writing file
+            def data = new byte[BUFFER];
+
+            // write the current file to disk
+            FileOutputStream fos = new FileOutputStream(destFile);
+            BufferedOutputStream dest = new BufferedOutputStream(fos, BUFFER);
+
+            // read and write until last byte is encountered
+            while ((currentByte = is.read(data, 0, BUFFER)) != -1) 
+            {
+                dest.write(data, 0, currentByte);
+            }
+            dest.flush();
+            dest.close();
+            is.close();
+        }
+    }
+}
+
+void unmapBuffer(final MappedByteBuffer buffer) throws Exception
+{
+    if (buffer != null) 
+    {
+        java.security.AccessController.doPrivileged(
+                new java.security.PrivilegedExceptionAction()
+                {
+                    public Object run() throws Exception
+                    {
+                        java.lang.reflect.Method getCleanerMethod =
+                                buffer.getClass().getMethod(
+                                        "cleaner",
+                                        new java.lang.Class[0]
+                                );
+                        getCleanerMethod.setAccessible(true);
+                        sun.misc.Cleaner cleaner =
+                                (sun.misc.Cleaner) getCleanerMethod.invoke(buffer);
+                        cleaner.clean();
+                        return null;
+                    }
+                }
+        );
+    }
+}
+
+boolean compareFiles(final Path filea, final Path fileb)
+{
+    FileChannel chana = null;
+    FileChannel chanb = null;
+    
+    try
+    {
+        if (Files.size(filea) != Files.size(fileb)) 
+        {
+            return false;
+        }
+
+        boolean res = true;
+        final long size = Files.size(filea);
+        final int mapspan = 4 * 1024 * 1024;
+
+        chana = (FileChannel) Files.newByteChannel(filea);
+        chanb = (FileChannel) Files.newByteChannel(fileb)
+
+        for (long position = 0; position < size; position += mapspan) 
+        {
+            MappedByteBuffer a = mapChannel(chana, position, size, mapspan);
+            MappedByteBuffer b = mapChannel(chanb, position, size, mapspan);
+
+            boolean r = a.equals(b);
+
+            unmapBuffer(a);
+            unmapBuffer(b);
+
+            if (false == r)
+            {
+                res = false;
+                break;
+            }
+        }
+
+        return res;
+    }
+    finally
+    {
+        if (null != chana)
+            chana.close();
+        if (null != chanb)
+            chanb.close();
+    }
+}
+
+MappedByteBuffer mapChannel(FileChannel channel, long position, long size, int mapspan) throws IOException 
+{
+    final long end = Math.min(size, position + mapspan);
+    final long maplen = (int)(end - position);
+    return channel.map(MapMode.READ_ONLY, position, maplen);
+}
+
+void mergeFolder(File src, File dest) throws IOException
+{
+    if (true == src.isDirectory())
+    {
+        
+        //if directory not exists, create it
+        if (false == dest.exists())
+        {
+           dest.mkdir();
+           System.out.println("New directory copied from '" + src + "' to '" + dest + "'");
+        }
+        
+        //list all the directory contents
+        def files = src.list();
+        
+        for (String file : files) 
+        {
+           //construct the src and dest file structure
+           File srcFile = new File(src, file);
+           File destFile = new File(dest, file);
+           //recursive copy
+           mergeFolder(srcFile,destFile);
+        }
+       
+    }
+    else
+    {
+        if (true == dest.exists() && true == compareFiles(src.toPath(), dest.toPath()))
+            return;
+
+        java.nio.file.Files.copy (
+            src.toPath(), 
+            dest.toPath(), 
+            java.nio.file.StandardCopyOption.REPLACE_EXISTING
+        );
+        System.out.println("New file copied from '" + src + "' to '" + dest + "'");
+    }
+}
+
+boolean deleteDirectory(File directory) 
+{
+    if (true == directory.exists())
+    {
+        def files = directory.list();
+        if(null != files)
+        {
+            for(int i = 0; i < files.length; i++) 
+            {
+                File f = new File(directory, files[i]);
+                if(f.isDirectory()) 
+                {
+                    deleteDirectory(f);
+                }
+                else 
+                {
+                    f.delete();
+                }
+            }
+        }
+    }
+    return (directory.delete());
+}

@@ -1,0 +1,16 @@
+call gradlew clean
+call gradlew publishApkKhimkiRelease
+call gradlew publishApkKrasnogorskRelease
+call gradlew publishApkMytischiRelease
+call gradlew publishApkOdintsovoRelease
+call gradlew publishApkPodolskRelease
+call gradlew publishApkLobnyaRelease
+call gradlew publishApkDolgoprudnyRelease
+call gradlew publishApkKorkinoRelease
+call gradlew publishApkRamenskoeRelease
+call gradlew publishApkBalashikhaRelease
+call gradlew publishApkKyshtymRelease
+call gradlew publishApkOzyorskRelease
+call gradlew publishApkBryanskRelease
+call gradlew publishApkNeftekamskRelease
+call gradlew publishApkSyktyvkarRelease
